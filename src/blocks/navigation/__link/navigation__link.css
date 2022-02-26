@@ -1,0 +1,21 @@
+.navigation__link{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+  text-decoration: none;
+  margin: auto;
+  margin-right: 20px;
+}
+
+
+.navigation__link:nth-last-child(1){
+  min-width: 100px;
+  min-height: 32px;
+  margin-left: 30px;
+  background-image: url('../../../images/profile_main.svg');
+  background-size: cover;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}

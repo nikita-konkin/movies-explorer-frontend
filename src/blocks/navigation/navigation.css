@@ -1,0 +1,5 @@
+.navigation{
+  display: flex;
+  justify-content: space-between;
+  margin: 21px 70px 21px auto;
+}
