@@ -10,3 +10,10 @@
 @import url(./blocks/navigation/navigation.css);
 @import url(./blocks/navigation/__link/navigation__link.css);
 @import url(./blocks/navigation/__link/_active/navigation__link_active.css);
+
+@import url(./blocks/form-search/form-search.css);
+@import url(./blocks/form-search/__input/form-search__input.css);
+@import url(./blocks/form-search/__btn-submit/form-search__btn-submit.css);
+@import url(./blocks/form-search/__lable/form-search__lable.css);
+@import url(./blocks/form-search/__btn-switch/form-search__btn-switch.css);
+@import url(./blocks/form-search/__container/form-search__container.css);

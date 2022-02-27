@@ -1,0 +1,12 @@
+.form-search__btn-submit{
+  position: absolute;
+  top: 96px;
+  right: 12px;
+  /* background-image: url('../../../images/close_button.svg'); */
+  /* min-width: 32px; */
+  /* min-height: 32px; */
+  /* background-color: transparent; */
+  border: 0;
+  padding: 0;
+
+}
