@@ -16,4 +16,6 @@
 @import url(./blocks/form-search/__btn-submit/form-search__btn-submit.css);
 @import url(./blocks/form-search/__lable/form-search__lable.css);
 @import url(./blocks/form-search/__btn-switch/form-search__btn-switch.css);
+@import url(./blocks/form-search/__btn-switch-slider/form-search__btn-switch-slider.css);
+@import url(./blocks/form-search/__btn-switch-container/form-search__btn-switch-container.css);
 @import url(./blocks/form-search/__container/form-search__container.css);
