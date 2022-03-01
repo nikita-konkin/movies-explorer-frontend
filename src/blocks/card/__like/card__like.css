@@ -1,0 +1,10 @@
+.card__like{
+  height: 24px;
+  width: 24px;
+  background-image: url('../../../images/card_like_disable.svg');
+  background-size: cover;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
