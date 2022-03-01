@@ -1,9 +1,5 @@
 import React, { useContext, useState } from 'react';
 
-
-
-
-
 export default function SearchForm() {
 
   const [tuggleSwitchState, setTuggleSwitchState] = useState(false);
@@ -22,10 +18,11 @@ export default function SearchForm() {
         <label className="form-search__lable">
           Короткометражки
         </label>
-        <lable className="form-search__btn-switch-container">
-          <input type="checkbox" className="form-search__btn-switch" checked={tuggleSwitchState} />
+        <div className="form-search__btn-switch-container">
+          <input type="checkbox" className="form-search__btn-switch" checked={tuggleSwitchState} readOnly/>
           <span className="form-search__btn-switch-slider" onClick={handleTuggleSwitchState}></span>
-        </lable>
+        </div>
+        <hr />
 
     </form>
   );

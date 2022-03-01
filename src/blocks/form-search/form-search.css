@@ -3,5 +3,9 @@
   max-height: 222px;
   height: 100%;
   weight: 100%;
-  max-width: 1280px;
+  max-width: 1140px;
+  margin-left: 70px;
+
+  border-bottom: 2px solid #E8E8E8;
+  padding-bottom: 10px;
 }
