@@ -9,6 +9,7 @@
   box-sizing: border-box;
   margin: 80px 41px 83px 0px;
   padding-left: 22px;
+  padding-right: 41px;
 }
 
 .form-search__input::placeholder{
