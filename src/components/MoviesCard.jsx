@@ -18,9 +18,8 @@ export default function MoviesCard(props) {
   }
 
   const cardLikeButtonClassName = (
-    `card__like ${like ? 'card__like_liked' : ''}`
+    `${props.tempSaved ? 'card__delete' : `card__like ${like ? 'card__like_liked' : ''}`}`
   );
-
 
   return (
     <div className="card" id={props.id}>

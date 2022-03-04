@@ -12,6 +12,7 @@ export default function MoviesCardList(props){
         nameRU={card.nameRU}
         image={url}
         duration={card.duration}
+        tempSaved={props.tempSaved}
         />))}
     </section>
   )

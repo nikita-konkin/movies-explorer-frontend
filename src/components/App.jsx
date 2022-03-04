@@ -16,8 +16,8 @@ import Movies from './Movies.jsx'
 import SavedMovies from './SavedMovies.jsx'
 import Profile from './Profile.jsx'
 import Header from './Header.jsx'
-import Footer from './Footer.jsx'
 import Navigation from './Navigation.jsx'
+import Register from './Register.jsx'
 
 export default function App() {
 
@@ -43,10 +43,10 @@ export default function App() {
       <Header component = {Navigation}/>
       <Routes>
         <Route path="movies" element={<Movies cardsArray = {cardsArray} />} />
-        <Route path="saved-movies" element={<SavedMovies />} />
+        <Route path="saved-movies" element={<SavedMovies cardsArray = {cardsArray} />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="signup" element={<Register />} />
       </Routes>
-      <Footer />
     </div>
   )
 

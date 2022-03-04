@@ -1,0 +1,6 @@
+.profile__email-input-container{
+  display: flex;
+  /* border-bottom: 2px solid #E8E8E8; */
+  max-width: 410px;
+  width: 100%;
+}

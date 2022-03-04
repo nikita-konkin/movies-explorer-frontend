@@ -25,6 +25,7 @@
 @import url(./blocks/card/__title-container/card__title-container.css);
 @import url(./blocks/card/__title/card__title.css);
 @import url(./blocks/card/__like/card__like.css);
+@import url(./blocks/card/__delete/card__delete.css);
 @import url(./blocks/card/__like/_liked/card__like_liked.css);
 @import url(./blocks/card/__movie-duration/card__movie-duration.css);
 @import url(./blocks/card/__image/card__image.css);
@@ -35,9 +36,19 @@
 @import url(./blocks/preloader/__container/preloader__container.css);
 @import url(./blocks/preloader/__round/preloader__round.css);
 
-
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__signature/footer__signature.css);
 @import url(./blocks/footer/__container/footer__container.css);
 @import url(./blocks/footer/__link/footer__link.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);
+
+@import url(./blocks/profile/profile.css);
+@import url(./blocks/profile/__welcome/profile__welcome.css);
+@import url(./blocks/profile/__user-name/profile__user-name.css);
+@import url(./blocks/profile/__user-email/profile__user-email.css);
+@import url(./blocks/profile/__edit/profile__edit.css);
+@import url(./blocks/profile/__logout/profile__logout.css);
+@import url(./blocks/profile/__name-input-container/profile__name-input-container.css);
+@import url(./blocks/profile/__email-input-container/profile__email-input-container.css);
+@import url(./blocks/profile/__name-input-lable/profile__name-input-lable.css);
+@import url(./blocks/profile/__email-input-lable/profile__email-input-lable.css);

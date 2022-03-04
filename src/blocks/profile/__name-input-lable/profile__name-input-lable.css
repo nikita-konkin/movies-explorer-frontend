@@ -1,0 +1,14 @@
+.profile__name-input-lable{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+
+  color: #000000;
+
+  /* position: relative;
+  right: -30px; */
+
+  max-width: 50px;
+  width: 100%;
+}

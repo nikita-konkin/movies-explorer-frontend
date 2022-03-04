@@ -1,10 +1,18 @@
 import React, { useContext } from 'react';
+import MoviesCardList from './MoviesCardList.jsx'
+import SearchForm from './SearchForm.jsx'
+import Footer from './Footer.jsx'
 
+export default function SavedMovies(props) {
 
-export default function SavedMovies() {
+  const tempFilter = props.cardsArray.filter(value => value.id < 10);
+  const tempSaved = true;
+
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>SavedMovies</h2>
-    </main>
+    <>
+      <SearchForm />
+      <MoviesCardList cardsArray={tempFilter} tempSaved={tempSaved}/>
+      <Footer />
+    </>
   );
 }
