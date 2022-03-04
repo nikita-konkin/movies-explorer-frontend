@@ -4,8 +4,9 @@
 
 
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/_displaced/header_displaced.css);
 @import url(./blocks/header/__logo/header__logo.css);
-
+@import url(./blocks/header/__logo/_displaced/header__logo_displaced.css);
 
 @import url(./blocks/navigation/navigation.css);
 @import url(./blocks/navigation/__link/navigation__link.css);
@@ -19,7 +20,6 @@
 @import url(./blocks/form-search/__btn-switch-slider/form-search__btn-switch-slider.css);
 @import url(./blocks/form-search/__btn-switch-container/form-search__btn-switch-container.css);
 @import url(./blocks/form-search/__container/form-search__container.css);
-
 
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__title-container/card__title-container.css);
@@ -52,3 +52,23 @@
 @import url(./blocks/profile/__email-input-container/profile__email-input-container.css);
 @import url(./blocks/profile/__name-input-lable/profile__name-input-lable.css);
 @import url(./blocks/profile/__email-input-lable/profile__email-input-lable.css);
+
+@import url(./blocks/entry/entry.css);
+@import url(./blocks/entry/__welcome/entry__welcome.css);
+@import url(./blocks/entry/__user-name-lable/entry__user-name-lable.css);
+@import url(./blocks/entry/__user-name-input/entry__user-name-input.css);
+@import url(./blocks/entry/__user-email-lable/entry__user-email-lable.css);
+@import url(./blocks/entry/__user-email-input/entry__user-email-input.css);
+@import url(./blocks/entry/__user-password-lable/entry__user-password-lable.css);
+@import url(./blocks/entry/__user-password-input/entry__user-password-input.css);
+@import url(./blocks/entry/__input-error/entry__input-error.css);
+@import url(./blocks/entry/__submit/entry__submit.css);
+@import url(./blocks/entry/__check-text/entry__check-text.css);
+@import url(./blocks/entry/__check-link/entry__check-link.css);
+
+@import url(./blocks/error-page/error-page.css);
+@import url(./blocks/error-page/__number/error-page__number.css);
+@import url(./blocks/error-page/__text/error-page__text.css);
+@import url(./blocks/error-page/__link/error-page__link.css);
+
+@import url(./blocks/main/main.css);
