@@ -1,0 +1,12 @@
+.portfolio__header{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+
+  color: #A0A0A0;
+
+  margin: 100px auto 0 auto;
+  max-width: 1140px;
+  width: 100%;
+}

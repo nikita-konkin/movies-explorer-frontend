@@ -1,0 +1,14 @@
+.aboutme__info-job{
+  grid-area: job;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+
+  color: #111111;
+
+  max-width: 600px;
+  width: 100%;
+  margin: 18px 0 0 0;
+}

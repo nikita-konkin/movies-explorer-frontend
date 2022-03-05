@@ -97,3 +97,22 @@
 @import url(./blocks/about/__table-graph/about__table-graph.css);
 @import url(./blocks/about/__table-graph-cell/about__table-graph-cell.css);
 @import url(./blocks/about/__table-graph-head-cell/about__table-graph-head-cell.css);
+
+@import url(./blocks/aboutme/aboutme.css);
+@import url(./blocks/aboutme/__header/aboutme__header.css);
+@import url(./blocks/aboutme/__info-container/aboutme__info-container.css);
+@import url(./blocks/aboutme/__info-name/aboutme__info-name.css);
+@import url(./blocks/aboutme/__info-job/aboutme__info-job.css);
+@import url(./blocks/aboutme/__info-story/aboutme__info-story.css);
+@import url(./blocks/aboutme/__foto/aboutme__foto.css);
+@import url(./blocks/aboutme/__link-fb/aboutme__link-fb.css);
+@import url(./blocks/aboutme/__link-gh/aboutme__link-gh.css);
+@import url(./blocks/aboutme/__link/aboutme__link.css);
+
+
+@import url(./blocks/portfolio/portfolio.css);
+@import url(./blocks/portfolio/__header/portfolio__header.css);
+@import url(./blocks/portfolio/__container/portfolio__container.css);
+@import url(./blocks/portfolio/__link/portfolio__link.css);
+@import url(./blocks/portfolio/__link-arrow/portfolio__link-arrow.css);
+@import url(./blocks/portfolio/__link-container/portfolio__link-container.css);

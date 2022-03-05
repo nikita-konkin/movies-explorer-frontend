@@ -1,0 +1,23 @@
+.portfolio__link-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #E6E6E6;
+
+  max-width: 1140px;
+  width: 100%;
+
+}
+
+.portfolio__link-container:last-child{
+  border-bottom: none;
+  padding: 20px 0 0 0;
+}
+
+.portfolio__link-container:nth-child(2n){
+  padding: 20px 0 19px 0;
+}
+
+.portfolio__link-container:nth-child(1){
+  padding: 0px 0 19px 0;
+}

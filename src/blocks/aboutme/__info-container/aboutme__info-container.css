@@ -1,0 +1,15 @@
+.aboutme__info-container{
+  max-width: 1140px;
+  width: 100%;
+
+  margin: 66px auto 0 auto;
+
+  display: grid;
+  grid-template-areas:
+    'name foto'
+    'job foto'
+    'story foto'
+    'link foto';
+  /* gap: 10px; */
+  grid-template-columns: 4fr 1fr;
+}
