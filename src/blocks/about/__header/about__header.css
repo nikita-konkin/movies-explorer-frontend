@@ -1,0 +1,18 @@
+.about__header{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+
+  color: #000000;
+
+  border-bottom: 2px solid #000000;
+  max-width: 1140px;
+  width: 90%;
+
+  margin: 100px 70px 0 70px;
+  padding: 0 0 23px 0;
+
+
+}

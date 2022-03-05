@@ -6,16 +6,26 @@ import AboutMe from './AboutMe.jsx'
 import Portfolio from './Portfolio.jsx'
 import Footer from './Footer.jsx'
 import Header from './Header.jsx'
+import {
+  Link,
+  NavLink,
+} from "react-router-dom";
 
 export default function Main() {
 
   function navigation() {
-    return true;
+    return (
+        <nav className="navigation">
+          <NavLink className="navigation__link_white" to="/signup">Регситрация</NavLink>
+          <NavLink className="navigation__link-signin" to="/profile">Войти</NavLink>
+        </nav>
+    )
+
   }
 
   return (
     <>
-      <Header component={navigation}/>
+      <Header component={navigation} setBackColor={true}/>
       <main className="main">
         {<Promo />}
         {<AboutProject />}

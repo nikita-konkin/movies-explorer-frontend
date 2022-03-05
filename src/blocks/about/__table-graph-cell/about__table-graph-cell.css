@@ -1,0 +1,15 @@
+.about__table-graph-cell{
+  /* height: 36px; */
+  text-align: center;
+
+  padding-top: 14px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: #A0A0A0;
+}

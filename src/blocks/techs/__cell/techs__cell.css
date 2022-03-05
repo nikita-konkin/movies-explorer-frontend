@@ -1,0 +1,12 @@
+.techs__cell{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+
+  background: #E8E8E8;
+  border-radius: 10px;
+
+  width: 90px;
+  height: 60px;
+
+}

@@ -7,10 +7,13 @@
 @import url(./blocks/header/_displaced/header_displaced.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__logo/_displaced/header__logo_displaced.css);
+@import url(./blocks/header/_backcolor-blue/header_backcolor-blue.css);
 
 @import url(./blocks/navigation/navigation.css);
 @import url(./blocks/navigation/__link/navigation__link.css);
+@import url(./blocks/navigation/__link-signin/navigation__link-signin.css);
 @import url(./blocks/navigation/__link/_active/navigation__link_active.css);
+@import url(./blocks/navigation/__link/_white/navigation__link_white.css);
 
 @import url(./blocks/form-search/form-search.css);
 @import url(./blocks/form-search/__input/form-search__input.css);
@@ -72,3 +75,25 @@
 @import url(./blocks/error-page/__link/error-page__link.css);
 
 @import url(./blocks/main/main.css);
+
+@import url(./blocks/promo/promo.css);
+@import url(./blocks/promo/__intro-container/promo__intro-container.css);
+@import url(./blocks/promo/__header/promo__header.css);
+@import url(./blocks/promo/__menu/promo__menu.css);
+@import url(./blocks/promo/__menu-link/promo__menu-link.css);
+
+@import url(./blocks/techs/techs.css);
+@import url(./blocks/techs/__header/techs__header.css);
+@import url(./blocks/techs/__title/techs__title.css);
+@import url(./blocks/techs/__text/techs__text.css);
+@import url(./blocks/techs/__table/techs__table.css);
+@import url(./blocks/techs/__cell/techs__cell.css);
+
+@import url(./blocks/about/about.css);
+@import url(./blocks/about/__header/about__header.css);
+@import url(./blocks/about/__table-stages/about__table-stages.css);
+@import url(./blocks/about/__table-stages-cell/about__table-stages-cell.css);
+@import url(./blocks/about/__table-stages-head-cell/about__table-stages-head-cell.css);
+@import url(./blocks/about/__table-graph/about__table-graph.css);
+@import url(./blocks/about/__table-graph-cell/about__table-graph-cell.css);
+@import url(./blocks/about/__table-graph-head-cell/about__table-graph-head-cell.css);

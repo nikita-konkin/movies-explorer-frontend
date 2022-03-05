@@ -6,7 +6,7 @@ import logMovie from '../images/logo_movie.svg';
 export default function Header(props) {
 
   const logoClass = props.component() ? `header__logo` : `header__logo_displaced`
-  const headerClass = props.component() ? `header` : `header_displaced`
+  const headerClass = props.setBackColor ? `header_backcolor-blue` : props.component() ? `header` : `header_displaced`
 
   return (
     <header className={headerClass}>

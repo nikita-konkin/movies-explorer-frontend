@@ -1,0 +1,15 @@
+.techs__text{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  max-width: 460px;
+  width: 100%;
+
+  color: #000000;
+  margin: 26px 0 0 0;
+}

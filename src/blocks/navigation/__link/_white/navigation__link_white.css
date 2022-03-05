@@ -1,0 +1,9 @@
+.navigation__link_white{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: auto;
+  margin-right: 20px;
+}
