@@ -4,22 +4,23 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-
-  margin: 0;
+  padding: 17px 0 0 0;
 
   color: #000000;
 
-  height: 36px;
-  width: 228px;
+  min-height: 36px;
+  max-width: 228px;
+  width: 100%;
   background: #2BE080;
-  /* width: 100%; */
+
 }
 
-.about__table-graph-head-cell:nth-last-child(1){
+.about__table-graph-head-cell:nth-child(2){
   margin: 0;
-  height: 36px;
-  width: calc(1140px - 228px);
+  min-height: 36px;
+  max-width: calc(1140px - 228px);
   background: #F2F2F2;
+
   /* max-width: 228px; */
   /* width: 100%; */
 }

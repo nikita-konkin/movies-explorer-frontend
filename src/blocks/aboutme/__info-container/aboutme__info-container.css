@@ -22,3 +22,15 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+  .aboutme__info-container{
+
+    grid-template-areas:
+      'foto'
+      'name'
+      'job'
+      'story'
+      'link';
+
+	}
+}

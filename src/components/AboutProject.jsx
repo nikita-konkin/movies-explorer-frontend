@@ -5,51 +5,23 @@ export default function AboutProject() {
     <div className="about" >
       <h2 className="about__header">О проекте</h2>
 
-      <table className="about__table-stages" >
-        <tbody>
-          <tr>
-            <th className="about__table-stages-head-cell" >
-              Дипломный проект включал 5 этапов
-            </th>
-            <th className="about__table-stages-head-cell" >
-              На выполнение диплома ушло 5 недель
-            </th>
-          </tr>
-          <tr>
-            <td className="about__table-stages-cell" >
-              Составление плана, работу над бэкендом,
-              вёрстку, добавление функциональности и
-              финальные доработки.
-            </td>
-            <td className="about__table-stages-cell" >
-              У каждого этапа был мягкий и
-              жёсткий дедлайн, которые нужно
-              было соблюдать, чтобы успешно защититься.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="about__table-stages" >
+        <h3 className="about__table-stages-head-cell">Дипломный проект включал 5 этапов</h3>
+        <h3 className="about__table-stages-head-cell">На выполнение диплома ушло 5 недель</h3>
+        <p className="about__table-stages-cell">Составление плана, работу над бэкендом,
+        вёрстку, добавление функциональности и
+        финальные доработки.</p>
+        <p className="about__table-stages-cell">У каждого этапа был мягкий и
+        жёсткий дедлайн, которые нужно
+        было соблюдать, чтобы успешно защититься.</p>
+      </div>
 
-      <table className="about__table-graph" >
-        <tbody>
-          <tr>
-            <th className="about__table-graph-head-cell" >
-              1 неделя
-            </th>
-            <th className="about__table-graph-head-cell" >
-              4 недели
-            </th>
-          </tr>
-          <tr>
-            <td className="about__table-graph-cell" >
-              Back-end
-            </td>
-            <td className="about__table-graph-cell" >
-              Front-end
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="about__table-graph" >
+        <h3 className="about__table-graph-head-cell">1 неделя</h3>
+        <h3 className="about__table-graph-head-cell">4 неделя</h3>
+        <p className="about__table-graph-cell">Back-end</p>
+        <p className="about__table-graph-cell">Front-end</p>
+      </div>
 
     </div>
   );

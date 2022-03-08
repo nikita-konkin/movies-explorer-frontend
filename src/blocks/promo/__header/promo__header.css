@@ -11,3 +11,12 @@
 
   max-width: 730px;
 }
+
+@media screen and (max-width: 320px){
+  .promo__header{
+
+    font-size: 31px;
+    line-height: 39px;
+
+	}
+}

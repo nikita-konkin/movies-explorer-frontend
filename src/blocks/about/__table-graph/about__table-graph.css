@@ -1,13 +1,22 @@
 .about__table-graph{
-  margin: 110px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  /* grid-template-areas:
+    'header1 header2'
+    'cell cell'; */
+
+  margin: 110px auto 110px auto;
   border-spacing: 0px;
   max-width: 1140px;
   width: 100%;
+  align-items: center;
+
 }
 @media screen and (max-width: 768px){
 	.about__table-graph{
 
-    margin: 73px 0 0 0;
+    margin: 73px 0 73px 0;
     max-width: 666px;
 
 	}

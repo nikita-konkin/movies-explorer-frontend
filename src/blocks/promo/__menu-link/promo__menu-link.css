@@ -16,3 +16,12 @@
 .promo__menu-link:nth-last-child(1){
   margin: 0 0 0 0;
 }
+
+@media screen and (max-width: 320px){
+  .promo__menu-link{
+
+    font-size: 11px;
+    line-height: 16px;
+
+	}
+}

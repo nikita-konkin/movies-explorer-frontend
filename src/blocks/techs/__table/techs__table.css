@@ -2,6 +2,13 @@
   padding: 0;
   margin: 90px 0 0 0;
   border-spacing: 10px;
+
+  display: inline-grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+
+  /* grid-template-columns: repeat(8, 1fr); */
+
 }
 
 @media screen and (max-width: 768px){

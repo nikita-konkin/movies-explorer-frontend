@@ -8,3 +8,11 @@
 
 	}
 }
+
+@media screen and (max-width: 320px){
+  .header__logo{
+
+    margin: 18px auto 32px 15px;
+
+	}
+}

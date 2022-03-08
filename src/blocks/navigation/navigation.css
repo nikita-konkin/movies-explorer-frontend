@@ -11,3 +11,10 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+  .navigation{
+
+    margin: 20px 15px 25px 30px;
+
+	}
+}
