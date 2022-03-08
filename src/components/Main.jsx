@@ -17,7 +17,7 @@ export default function Main() {
     return (
         <nav className="navigation">
           <NavLink className="navigation__link_white" to="/signup">Регситрация</NavLink>
-          <NavLink className="navigation__link-signin" to="/profile">Войти</NavLink>
+          <NavLink className="navigation__link-signin" to="/signin">Войти</NavLink>
         </nav>
     )
 

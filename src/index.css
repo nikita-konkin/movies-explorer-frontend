@@ -23,6 +23,7 @@
 @import url(./blocks/form-search/__btn-switch-slider/form-search__btn-switch-slider.css);
 @import url(./blocks/form-search/__btn-switch-container/form-search__btn-switch-container.css);
 @import url(./blocks/form-search/__container/form-search__container.css);
+@import url(./blocks/form-search/__switch-container/form-search__switch-container.css);
 
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__title-container/card__title-container.css);

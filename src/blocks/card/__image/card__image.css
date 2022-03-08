@@ -5,3 +5,11 @@
   max-height: 151px;
   object-fit: cover;
 }
+
+@media screen and (max-width: 768px){
+	.card__image{
+
+    max-height: 190px;
+
+	}
+}

@@ -4,3 +4,11 @@
   max-width: 1140px;
   width: 100%;
 }
+@media screen and (max-width: 768px){
+	.about__table-graph{
+
+    margin: 73px 0 0 0;
+    max-width: 666px;
+
+	}
+}

@@ -3,3 +3,12 @@
   margin: 90px 0 0 0;
   border-spacing: 10px;
 }
+
+@media screen and (max-width: 768px){
+	.techs__table{
+
+    margin: 75px 0 0 0;
+    border-spacing: 8px;
+
+	}
+}

@@ -10,3 +10,10 @@
   max-width: 1280px;
   min-height: 524px;
 }
+@media screen and (max-width: 768px){
+	.promo__intro-container{
+
+		min-height: 784px;
+
+	}
+}

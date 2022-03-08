@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import Navigation from './Navigation.jsx'
 import logMovie from '../images/logo_movie.svg';
-
+import {
+  NavLink,
+} from "react-router-dom";
 
 export default function Header(props) {
 
@@ -10,7 +12,7 @@ export default function Header(props) {
 
   return (
     <header className={headerClass}>
-      <img src={logMovie} className={logoClass} alt="Логотип" />
+      <NavLink to="/"><img src={logMovie} className={logoClass} alt="Логотип" /></NavLink>
       {props.component()}
     </header>
   );

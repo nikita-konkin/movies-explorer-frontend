@@ -14,3 +14,12 @@
   margin: 100px auto 0 auto;
   padding: 0 0 23px 0;
 }
+
+@media screen and (max-width: 768px){
+	.about__header{
+
+    margin: 89px auto 0 auto;
+    max-width: 668px;
+
+	}
+}

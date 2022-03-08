@@ -13,3 +13,12 @@
   color: #000000;
   margin: 26px 0 0 0;
 }
+@media screen and (max-width: 768px){
+	.techs__text{
+
+    font-size: 12px;
+    line-height: 18px;
+    margin: 22px 0 0 0;
+
+	}
+}

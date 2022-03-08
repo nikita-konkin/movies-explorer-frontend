@@ -8,12 +8,23 @@
   border: 1px solid #E8E8E8;
   box-sizing: border-box;
   margin: 80px 41px 83px 0px;
-  padding-left: 22px;
-  padding-right: 41px;
+  padding: 0 22px 0 41px;
+
 }
 
 .form-search__input::placeholder{
   font-size: 14px;
   line-height: 18px;
   color: #A0A0A0;
+}
+
+@media screen and (max-width: 768px){
+	.form-search__input{
+
+    min-height: 46px;
+    margin: 80px 0 0 30px;
+    padding: 0 43px 0 18px;
+    max-width: 709px;
+
+	}
 }

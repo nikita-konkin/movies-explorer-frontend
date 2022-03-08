@@ -5,6 +5,7 @@
   margin: 66px auto 0 auto;
 
   display: grid;
+  grid-auto-flow: column;
   grid-template-areas:
     'name foto'
     'job foto'
@@ -12,4 +13,12 @@
     'link foto';
   /* gap: 10px; */
   grid-template-columns: 4fr 1fr;
+}
+
+@media screen and (max-width: 768px){
+	.aboutme__info-container{
+
+    max-width: 668px;
+
+	}
 }

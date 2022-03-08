@@ -6,7 +6,7 @@
     height: 100%;
     max-width: 1140px;
     max-height: 63px;
-    margin: 50px 70px 80px 70px;
+    margin: 50px auto 80px auto;
     z-index: 10;
     /* padding: 20px; */
     background-color: #F9F9F9;

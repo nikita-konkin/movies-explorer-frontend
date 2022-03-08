@@ -16,3 +16,11 @@
   cursor: pointer;
 
 }
+
+@media screen and (max-width: 768px){
+	.form-search__btn-submit{
+
+    right: 36px;
+
+	}
+}

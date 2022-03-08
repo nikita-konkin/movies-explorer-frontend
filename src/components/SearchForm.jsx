@@ -15,6 +15,7 @@ export default function SearchForm() {
         <input type="text" placeholder="Фильм" name="search-box" className="form-search__input"/>
         <input type="submit" value=" " src="../images/find_btn.svg" className="form-search__btn-submit"/>
       </div>
+      <div className="form-search__switch-container">
         <label className="form-search__lable">
           Короткометражки
         </label>
@@ -23,6 +24,7 @@ export default function SearchForm() {
           <span className="form-search__btn-switch-slider" onClick={handleTuggleSwitchState}></span>
         </div>
         <hr />
+      </div>
 
     </form>
   );

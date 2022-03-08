@@ -1,9 +1,15 @@
 import React, { useContext } from 'react';
-
-
+import Header from './Header.jsx'
 
 export default function Profile() {
+
+  function navigation() {
+    return false;
+  }
+
   return (
+    <>
+    <Header component={navigation}/>
     <main className="profile">
       <h2 className="profile__welcome">Привет, Никита!</h2>
       <div className="profile__name-input-container">
@@ -24,5 +30,6 @@ export default function Profile() {
       <a className="profile__edit" href="">Редактировать</a>
       <a className="profile__logout" href="">Выйти из аккаунта</a>
     </main>
+    </>
   );
 }

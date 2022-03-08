@@ -42,7 +42,7 @@ export default function App() {
   return (
     <div className = "root">
       <Routes>
-        <Route path="main" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="movies" element={<Movies cardsArray = {cardsArray} />} />
         <Route path="saved-movies" element={<SavedMovies cardsArray = {cardsArray} />} />
         <Route path="profile" element={<Profile />} />

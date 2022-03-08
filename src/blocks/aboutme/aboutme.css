@@ -10,3 +10,10 @@
 
   margin: 0 70px auto 70px;
 }
+@media screen and (max-width: 768px){
+	.aboutme{
+
+		min-height: 535px;
+
+	}
+}

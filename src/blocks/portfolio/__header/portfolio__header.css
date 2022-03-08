@@ -10,3 +10,12 @@
   max-width: 1140px;
   width: 100%;
 }
+
+@media screen and (max-width: 768px){
+	.portfolio__header{
+
+		margin: 70px auto 0 auto;
+    max-width: 668px;
+
+	}
+}
