@@ -1,0 +1,11 @@
+.navigation__hamburger_disable{
+  margin: 15px 30px 15px auto;
+  background-image: url('../../../../images/hamburger_menu_disable.svg');
+  background-size: cover;
+  cursor: pointer;
+  background-color: transparent;
+  height: 44px;
+  width: 44px;
+  border: none;
+  z-index: 10;
+}

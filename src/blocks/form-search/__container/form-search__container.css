@@ -10,7 +10,10 @@
 @media screen and (max-width: 768px){
 	.form-search__container{
 
-    max-width: 768px;
-
+    /* max-width: 768px; */
+    margin: 60px auto 0 auto;
+    /* padding: 0 43px 0 18px; */
+    /* max-width: 708px; */
+    min-height: 46px;
 	}
 }

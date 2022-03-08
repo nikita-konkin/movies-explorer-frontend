@@ -1,0 +1,32 @@
+.navigation__link-side{
+  margin: 159px 0 0 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+
+  text-align: center;
+  text-decoration: none;
+
+  color: #000000;
+}
+
+.navigation__link-side:nth-child(2){
+  margin: 28px 0 0 0;
+}
+
+.navigation__link-side:nth-child(3){
+  margin: 28px 0 0 0;
+}
+
+.navigation__link-side:nth-last-child(1){
+  margin: auto 0 90px 0;
+  min-width: 100px;
+  min-height: 32px;
+  margin-left: 30px;
+  background-image: url('../../../images/profile_main.svg');
+  background-size: cover;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}

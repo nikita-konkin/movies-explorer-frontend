@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
 import Header from './Header.jsx'
+import Navigation from './Navigation.jsx'
 
 export default function Profile() {
 
-  function navigation() {
-    return false;
-  }
-
   return (
     <>
-    <Header component={navigation}/>
+    <Header component={Navigation}/>
     <main className="profile">
       <h2 className="profile__welcome">Привет, Никита!</h2>
       <div className="profile__name-input-container">

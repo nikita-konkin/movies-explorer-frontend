@@ -4,3 +4,10 @@
   max-height: 74px;
   max-width: 396px;
 }
+@media screen and (max-width: 768px){
+	.header_displaced{
+
+    margin: 231px auto 0 auto;
+
+	}
+}

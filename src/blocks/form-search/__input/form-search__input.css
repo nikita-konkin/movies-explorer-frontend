@@ -22,9 +22,9 @@
 	.form-search__input{
 
     min-height: 46px;
-    margin: 80px 0 0 30px;
+    margin: 0 0 0 0;
     padding: 0 43px 0 18px;
-    max-width: 709px;
+    /* max-width: 708px; */
 
 	}
 }
