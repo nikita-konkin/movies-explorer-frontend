@@ -15,3 +15,12 @@
 
 	}
 }
+
+@media screen and (max-width: 320px){
+	.about__table-stages{
+
+    grid-template-columns: 1fr;
+    margin: 24px 0 0 0;
+
+	}
+}

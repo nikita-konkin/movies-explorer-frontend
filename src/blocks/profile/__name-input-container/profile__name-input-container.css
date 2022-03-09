@@ -4,3 +4,10 @@
   max-width: 410px;
   width: 100%;
 }
+@media screen and (max-width: 320px){
+	.profile__name-input-container{
+
+    max-width: 260px;
+
+	}
+}

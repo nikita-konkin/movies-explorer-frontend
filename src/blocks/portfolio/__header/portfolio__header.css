@@ -19,3 +19,11 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+	.portfolio__header{
+
+    font-size: 14px;
+    line-height: 20px;
+
+	}
+}

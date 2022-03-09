@@ -11,3 +11,11 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+	.form-search__switch-container{
+
+    margin: 0 0 0 15px;
+    padding: 43px 0 0 0;
+
+	}
+}

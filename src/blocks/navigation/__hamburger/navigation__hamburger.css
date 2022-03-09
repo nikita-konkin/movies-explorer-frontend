@@ -12,6 +12,14 @@
   animation-duration: 1s;
 }
 
+@media screen and (max-width: 320px){
+	.navigation__hamburger{
+
+    margin: 15px 14px 15px auto;
+
+	}
+}
+
 @keyframes slideinHam {
   from {
     opacity: 0;

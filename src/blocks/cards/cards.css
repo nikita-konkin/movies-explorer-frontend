@@ -28,3 +28,11 @@
 
 	}
 }
+
+@media screen and (max-width: 320px){
+	.cards{
+
+		grid-template-columns: 1fr;
+    row-gap: 35px;
+	}
+}

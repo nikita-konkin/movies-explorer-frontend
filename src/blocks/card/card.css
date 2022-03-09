@@ -15,3 +15,12 @@
 
 	}
 }
+@media screen and (max-width: 3208px){
+	.card{
+
+    max-width: 310px;
+    margin: 0 10px 0 10px;
+    /* max-height: 279px; */
+
+	}
+}

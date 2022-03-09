@@ -23,3 +23,14 @@
 
 	}
 }
+
+@media screen and (max-width: 320px){
+	.about__header{
+
+    margin: 74px auto 0 auto;
+    max-width: 282px;
+    font-size: 18px;
+    line-height: 22px;
+
+	}
+}

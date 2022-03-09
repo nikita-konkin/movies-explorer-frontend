@@ -11,3 +11,10 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+	.header_displaced{
+
+    margin: 55px auto 0 140px;
+
+	}
+}

@@ -22,3 +22,11 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+	.aboutme__info-job{
+
+    font-size: 11px;
+    line-height: 16px;
+
+	}
+}

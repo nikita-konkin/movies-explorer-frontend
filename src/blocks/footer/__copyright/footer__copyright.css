@@ -10,3 +10,15 @@
 
   /* margin-right: 829px; */
 }
+@media screen and (max-width: 320px){
+	.footer__copyright{
+
+    font-size: 12px;
+    line-height: 15px;
+    min-height: 15px;
+    flex: auto;
+    margin: 30px 0 0 0;
+    color: #A0A0A0;
+
+	}
+}

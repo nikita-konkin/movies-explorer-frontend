@@ -30,3 +30,11 @@
 
 	}
 }
+
+@media screen  and (max-width: 320px){
+  .form-search{
+    max-width: 262px;
+    margin: 0 30px 65px 30px;
+
+	}
+}

@@ -25,6 +25,8 @@
 @media screen and (max-width: 320px){
   .aboutme__info-container{
 
+    max-width: 292px;
+    margin: 62px auto 0 auto;
     grid-template-areas:
       'foto'
       'name'

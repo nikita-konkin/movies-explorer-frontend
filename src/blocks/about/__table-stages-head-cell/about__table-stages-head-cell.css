@@ -11,3 +11,13 @@
 
   text-align: left;
 }
+
+@media screen and (max-width: 320px){
+	.about__table-stages-head-cell{
+
+    font-size: 18px;
+    line-height: 22px;
+    margin: 41px 0 0 10px;
+
+	}
+}

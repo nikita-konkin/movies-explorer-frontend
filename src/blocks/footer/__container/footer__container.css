@@ -5,3 +5,14 @@
   /* flex-basis: 120px; */
   border-top: 2px solid #E8E8E8;
 }
+@media screen and (max-width: 320px){
+	.footer__container{
+
+    flex-direction:column-reverse;
+    justify-content: center;
+    align-items: center;
+
+
+
+	}
+}

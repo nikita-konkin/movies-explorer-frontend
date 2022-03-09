@@ -13,3 +13,10 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+	.card__image{
+
+    max-height: 170px;
+
+	}
+}

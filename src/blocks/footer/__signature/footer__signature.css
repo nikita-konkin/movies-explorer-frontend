@@ -10,3 +10,13 @@
 
   margin: 0 auto 20px auto;
 }
+@media screen and (max-width: 320px){
+	.footer__signature{
+
+    font-size: 12px;
+    line-height: 15px;
+    max-width: 300px;
+    width: 100%;
+
+	}
+}

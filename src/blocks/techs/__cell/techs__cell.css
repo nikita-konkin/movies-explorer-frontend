@@ -31,3 +31,11 @@
 
 	}
 }
+@media screen and (max-width: 320px){
+	.techs__cell{
+
+    height: 57px;
+    margin: 0;
+
+	}
+}

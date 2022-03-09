@@ -6,14 +6,18 @@ export default function AboutProject() {
       <h2 className="about__header">О проекте</h2>
 
       <div className="about__table-stages" >
-        <h3 className="about__table-stages-head-cell">Дипломный проект включал 5 этапов</h3>
-        <h3 className="about__table-stages-head-cell">На выполнение диплома ушло 5 недель</h3>
-        <p className="about__table-stages-cell">Составление плана, работу над бэкендом,
-        вёрстку, добавление функциональности и
-        финальные доработки.</p>
-        <p className="about__table-stages-cell">У каждого этапа был мягкий и
-        жёсткий дедлайн, которые нужно
-        было соблюдать, чтобы успешно защититься.</p>
+        <div>
+          <h3 className="about__table-stages-head-cell">Дипломный проект включал 5 этапов</h3>
+          <p className="about__table-stages-cell">Составление плана, работу над бэкендом,
+          вёрстку, добавление функциональности и
+          финальные доработки.</p>
+        </div>
+        <div>
+          <h3 className="about__table-stages-head-cell">На выполнение диплома ушло 5 недель</h3>
+          <p className="about__table-stages-cell">У каждого этапа был мягкий и
+          жёсткий дедлайн, которые нужно
+          было соблюдать, чтобы успешно защититься.</p>
+        </div>
       </div>
 
       <div className="about__table-graph" >
