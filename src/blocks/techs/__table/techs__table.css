@@ -7,7 +7,6 @@
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 10px;
 
-  /* grid-template-columns: repeat(8, 1fr); */
 
 }
 
@@ -19,7 +18,15 @@
 
 	}
 }
+@media screen and (max-width: 671px){
+	.techs__table{
 
+    grid-template-columns: repeat(3, 1fr);
+    margin: 46px 0 0 0;
+    row-gap: 10px;
+
+	}
+}
 @media screen and (max-width: 320px){
 	.techs__table{
 

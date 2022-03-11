@@ -18,8 +18,8 @@ export default function AboutMe() {
             заниматься фриланс-заказами и ушёл с постоянной работы.</p>
           <img src={myFoto} className="aboutme__foto" alt="Никита"/>
           <div className="aboutme__link">
-            <a className="aboutme__link-fb">Facebook</a>
-            <a className="aboutme__link-gh">Github</a>
+            <a className="aboutme__link-fb" href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a className="aboutme__link-gh" href="https://github.com/nikita-konkin" target="_blank">Github</a>
           </div>
 
       </div>

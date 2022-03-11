@@ -17,4 +17,8 @@
   text-align: center;
 
   color: #FFFFFF;
+  transition: all 0.2s ease-out;
+}
+.entry__submit:hover{
+  opacity: 0.8;
 }

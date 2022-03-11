@@ -6,15 +6,15 @@ export default function Portfolio() {
       <h3 className="portfolio__header">Портфолио</h3>
       <div className="portfolio__container">
         <div className="portfolio__link-container">
-          <a href="url" className="portfolio__link">Статичный сайт</a>
+          <a href="https://github.com/nikita-konkin/how-to-learn" className="portfolio__link" target="_blank">Статичный сайт</a>
           <img src={arrowImg}  className="portfolio__link-arrow"></img>
         </div>
         <div className="portfolio__link-container">
-          <a href="url"  className="portfolio__link">Адаптивный сайт</a>
+          <a href="https://github.com/nikita-konkin/russian-travel"  className="portfolio__link" target="_blank">Адаптивный сайт</a>
           <img src={arrowImg} className="portfolio__link-arrow"></img>
         </div>
         <div className="portfolio__link-container">
-          <a href="url"  className="portfolio__link">Одностраничное приложение</a>
+          <a href="https://github.com/nikita-konkin/react-mesto-api-full"  className="portfolio__link" target="_blank">Одностраничное приложение</a>
           <img src={arrowImg} className="portfolio__link-arrow"></img>
         </div>
       </div>

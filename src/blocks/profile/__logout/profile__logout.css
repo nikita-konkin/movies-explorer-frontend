@@ -1,7 +1,7 @@
 .profile__logout{
   margin: 16px 0 0 0;
   text-decoration: none;
-  
+
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -10,4 +10,8 @@
   text-align: center;
 
   color: #FF004D;
+  transition: all 0.2s ease-out;
+}
+.profile__logout:hover{
+  opacity: 0.5;
 }

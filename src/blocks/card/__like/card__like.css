@@ -7,4 +7,11 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+
+  transition: all 1s ease-out;
+
+  border-radius: 15px;
+}
+.card__like:hover{
+  border: 1px solid #FF3055;
 }

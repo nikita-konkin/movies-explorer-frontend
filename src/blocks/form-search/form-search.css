@@ -3,7 +3,7 @@
   max-height: 222px;
   height: 100%;
   width: 100%;
-  max-width: 1140px;
+  max-width: calc(100% - 140px);
   justify-content: flex-start;
   /* align-items: flex-start; */
   border-bottom: 2px solid #E8E8E8;
@@ -15,21 +15,14 @@
 
     flex-direction: column;
     margin: 0 30px 70px 30px;
-    max-width: 708px;
+    max-width: calc(100% - 43px);
     justify-content: flex-start;
     align-items: flex-start;
 
 	}
 }
 
-@media screen and (min-width: 769px) and (max-width: 1000px){
-  .form-search{
 
-    max-width: 878px;
-
-
-	}
-}
 
 @media screen  and (max-width: 320px){
   .form-search{

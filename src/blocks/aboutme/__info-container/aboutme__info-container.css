@@ -22,6 +22,21 @@
 
 	}
 }
+@media screen and (max-width: 671px){
+  .aboutme__info-container{
+
+    max-width: 492px;
+    margin: 62px auto 0 auto;
+    grid-template-areas:
+      'foto'
+      'name'
+      'job'
+      'story'
+      'link';
+
+	}
+}
+
 @media screen and (max-width: 320px){
   .aboutme__info-container{
 

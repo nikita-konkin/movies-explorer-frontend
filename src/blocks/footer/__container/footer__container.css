@@ -5,7 +5,7 @@
   /* flex-basis: 120px; */
   border-top: 2px solid #E8E8E8;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 380px){
 	.footer__container{
 
     flex-direction:column-reverse;

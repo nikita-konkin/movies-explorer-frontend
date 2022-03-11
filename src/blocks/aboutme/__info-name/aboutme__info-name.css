@@ -24,7 +24,8 @@
 
 	}
 }
-@media screen and (max-width: 320px){
+
+@media screen and (max-width: 671px){
 	.aboutme__info-name{
 
     font-size: 30px;

@@ -14,9 +14,13 @@
   border: 0;
   padding: 0;
   cursor: pointer;
-
+  transition: transform 1s;
 }
 
+.form-search__btn-submit:hover{
+
+  transform: rotate(360deg);
+}
 @media screen and (max-width: 768px){
 	.form-search__btn-submit{
 

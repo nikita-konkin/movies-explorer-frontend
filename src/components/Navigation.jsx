@@ -9,10 +9,10 @@ export default function Navigation() {
   const [menuState, setMenuState] = useState(false)
   const [windoWidth, setWindoWidth] = useState(window.innerWidth)
   const [sideMenuWidth, setSideMenuWidth] = useState(false)
-  const hamburgerBtnStyle = menuState ? `navigation__hamburger_disable` : `navigation__hamburger`
+  const hamburgerBtnStyle = menuState ? `navigation__hamburger navigation__hamburger_disable` : `navigation__hamburger`
   const navLinkStyle = menuState ? `navigation__link-side` : `navigation__link`
   const navLinkStyleActive = menuState ? `navigation__link-side navigation__link-side_active` : `navigation__link navigation__link_active`
-  const navStyle = ( `${menuState ? `navigation__side ${sideMenuWidth ? `navigation__side_mobile` : '12'}` : `navigation`}`)
+  const navStyle = ( `${menuState ? `navigation__side ${sideMenuWidth ? `navigation__side_mobile` : ''}` : `navigation`}`)
 
 
   useEffect(() => {

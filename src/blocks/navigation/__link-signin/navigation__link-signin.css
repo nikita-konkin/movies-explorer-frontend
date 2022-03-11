@@ -19,9 +19,11 @@
   text-decoration: none;
 
   color: #000000;
-
+  transition: all 0.2s ease-out;
 }
-
+.navigation__link-signin:hover{
+  opacity: 0.7;
+}
 @media screen and (max-width: 320px){
   .navigation__link-signin{
 

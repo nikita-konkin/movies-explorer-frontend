@@ -10,7 +10,7 @@
 
   /* margin-right: 829px; */
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 380px){
 	.footer__copyright{
 
     font-size: 12px;

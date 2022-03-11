@@ -1,25 +1,4 @@
 .navigation__hamburger_disable{
-  margin: 15px 30px 15px auto;
   background-image: url('../../../../images/hamburger_menu_disable.svg');
-  background-size: cover;
-  cursor: pointer;
-  background-color: transparent;
-  height: 44px;
-  width: 44px;
-  border: none;
   z-index: 10;
-
-  animation-name: slideinHamDis;
-  animation-timing-function: ease-in-out;
-  animation-duration: 1s;
-}
-
-@keyframes slideinHamDis {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
