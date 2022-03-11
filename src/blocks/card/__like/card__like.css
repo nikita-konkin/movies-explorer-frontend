@@ -1,6 +1,9 @@
 .card__like{
-  height: 24px;
-  width: 24px;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  height: 21px;
+  width: 21px;
   background-image: url('../../../images/card_like_disable.svg');
   background-size: cover;
   background-color: transparent;

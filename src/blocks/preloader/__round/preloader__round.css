@@ -1,12 +1,27 @@
-/* .preloader__round {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #FF6838;
-    border-radius: 50px;
-} */
+.preloader__round {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: #FF6838;
+  border-radius: 50px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+
+
+}
 
 /* .preloader__round::after,
 .preloader__round::before {

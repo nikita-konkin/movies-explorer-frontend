@@ -20,16 +20,20 @@ export default function Navigation() {
   }, []);
 
   const addLink = <NavLink className={({ isActive }) => (isActive ? `${navLinkStyleActive}` : `${navLinkStyle}`)} to="/">Главная</NavLink>
-
-  function menu(additionalLink){
+  const addMenuBackground = <div className="navigation__background"></div>
+  function menu(additionalLink, addMenuBackground){
 
     return(
+      <>
+      {addMenuBackground}
       <nav className={navStyle}>
         {additionalLink}
         <NavLink className={({ isActive }) => (isActive ? `${navLinkStyleActive}` : `${navLinkStyle}`)} to="/movies">Фильмы</NavLink>
         <NavLink className={({ isActive }) => (isActive ? `${navLinkStyleActive}` : `${navLinkStyle}`)} to="/saved-movies">Сохранённые фильмы</NavLink>
         <NavLink className={({ isActive }) => (isActive ? `${navLinkStyleActive}` : `${navLinkStyle}`)} to="/profile"></NavLink>
       </nav>
+      </>
+
     )
   }
 
@@ -62,7 +66,7 @@ export default function Navigation() {
   function sideMenu(){
 
     return(
-      menu(addLink)
+      menu(addLink, addMenuBackground)
     )
   }
 

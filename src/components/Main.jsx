@@ -16,7 +16,7 @@ export default function Main() {
   function navigation() {
     return (
         <nav className="navigation">
-          <NavLink className="navigation__link navigation__link_white" to="/signup">Регситрация</NavLink>
+          <NavLink className="navigation__link" to="/signup">Регситрация</NavLink>
           <NavLink className="navigation__link-signin" to="/signin">Войти</NavLink>
         </nav>
     )
@@ -25,7 +25,7 @@ export default function Main() {
 
   return (
     <>
-      <Header component={navigation} setBackColor={true}/>
+      <Header component={navigation}/>
       <main className="main">
         {<Promo />}
         {<AboutProject />}

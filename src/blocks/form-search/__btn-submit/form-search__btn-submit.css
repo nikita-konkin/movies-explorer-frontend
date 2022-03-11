@@ -1,14 +1,12 @@
 .form-search__btn-submit{
   position: absolute;
-  top: 86px;
+  top: 85px;
   right: 6px;
   height: 36px;
   width: 36px;
   background-size: cover;
   background-color: transparent;
   background-image: url('../../../images/find_btn.svg');
-  /* min-width: 32px; */
-  /* min-height: 32px; */
   background-color: transparent;
   margin: 0;
   border: 0;

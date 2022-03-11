@@ -1,5 +1,9 @@
 .form-search{
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  
   max-height: 222px;
   height: 100%;
   width: 100%;
@@ -13,11 +17,10 @@
 @media screen and (max-width: 768px){
 	.form-search{
 
-    flex-direction: column;
+
     margin: 0 30px 70px 30px;
     max-width: calc(100% - 43px);
-    justify-content: flex-start;
-    align-items: flex-start;
+
 
 	}
 }

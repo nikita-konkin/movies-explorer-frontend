@@ -5,8 +5,15 @@
   line-height: 13px;
   display: flex;
   align-items: center;
-
+  justify-content: center;
+  margin: 0;
   color: #A0A0A0;
+  max-width: 52px;
+  width: 100%;
+  max-height: 18px;
+
+  background: #F9F9F9;
+  border-radius: 3px;
 }
 @media screen and (max-width: 320px){
 	.card__movie-duration{

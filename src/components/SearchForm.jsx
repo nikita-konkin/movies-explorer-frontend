@@ -16,13 +16,13 @@ export default function SearchForm() {
         <input type="submit" value=" " src="../images/find_btn.svg" className="form-search__btn-submit"/>
       </div>
       <div className="form-search__switch-container">
-        <label className="form-search__lable">
-          Короткометражки
-        </label>
         <div className="form-search__btn-switch-container">
           <input type="checkbox" className="form-search__btn-switch" checked={tuggleSwitchState} readOnly/>
           <span className="form-search__btn-switch-slider" onClick={handleTuggleSwitchState}></span>
         </div>
+        <label className="form-search__lable">
+          Короткометражки
+        </label>
         <hr />
       </div>
 

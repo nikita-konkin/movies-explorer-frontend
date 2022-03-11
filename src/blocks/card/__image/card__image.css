@@ -4,6 +4,7 @@
   /* max-width: 226px; */
   max-height: 151px;
   object-fit: cover;
+  border-radius: 6px;
 }
 
 @media screen and (max-width: 768px){

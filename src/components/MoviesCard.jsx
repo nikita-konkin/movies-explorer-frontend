@@ -8,13 +8,21 @@ export default function MoviesCard(props) {
     var time = ''
     const hour = (props.duration - (props.duration % 60)) / 60
     const min = props.duration % 60
-    hour != 0 ? time = `${hour}ч${min}м` : time = `${min}м`
+    hour != 0 ? time = `${hour}ч ${min}м` : time = `${min}м`
 
     return time
   }
 
   function handleLike() {
     setlike(!like)
+  }
+
+  function renderSaveBtn(){
+    if (!props.tempSaved) {
+      return(
+        <h3 className="card__save">Сохранить</h3>
+      )
+    }
   }
 
   const cardLikeButtonClassName = (
@@ -26,11 +34,11 @@ export default function MoviesCard(props) {
       <img className="card__image" src={props.image} />
       <div className="card__title-container">
         <h2 className="card__title">{props.nameRU}</h2>
-        <div className="card__like-wrap">
-          <button type="button" className={`${cardLikeButtonClassName}`} onClick={handleLike}></button>
-        </div>
+        <h3 className="card__movie-duration">{durationCounter()}</h3>
+
+        <button type="button" className={`${cardLikeButtonClassName}`} onClick={handleLike}></button>
       </div>
-      <h3 className="card__movie-duration">{durationCounter()}</h3>
+      {renderSaveBtn()}
     </div>
   )
 }

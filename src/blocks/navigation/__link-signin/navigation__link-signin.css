@@ -17,7 +17,7 @@
   justify-content: center;
 
   text-decoration: none;
-
+  border-radius: 3px;
   color: #000000;
   transition: all 0.2s ease-out;
 }
@@ -28,8 +28,8 @@
   .navigation__link-signin{
 
     min-width: 54px;
-    min-height: 26px;
-    margin: 0 0 0 15px;
+    max-height: 26px;
+    margin: auto 0 auto 15px;
 
 	}
 }

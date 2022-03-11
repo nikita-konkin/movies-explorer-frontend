@@ -1,4 +1,5 @@
 .card{
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -15,7 +16,7 @@
 
 	}
 }
-@media screen and (max-width: 3208px){
+@media screen and (max-width: 320px){
 	.card{
 
     max-width: 310px;

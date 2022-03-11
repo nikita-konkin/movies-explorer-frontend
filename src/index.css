@@ -20,6 +20,7 @@
 @import url(./blocks/navigation/__link-side/_active/navigation__link-side_active.css);
 @import url(./blocks/navigation/__side/navigation__side.css);
 @import url(./blocks/navigation/__side/_mobile/navigation__side_mobile.css);
+@import url(./blocks/navigation/__background/navigation__background.css);
 
 @import url(./blocks/form-search/form-search.css);
 @import url(./blocks/form-search/__input/form-search__input.css);
@@ -39,6 +40,7 @@
 @import url(./blocks/card/__like/_liked/card__like_liked.css);
 @import url(./blocks/card/__movie-duration/card__movie-duration.css);
 @import url(./blocks/card/__image/card__image.css);
+@import url(./blocks/card/__save/card__save.css);
 
 @import url(./blocks/cards/cards.css);
 

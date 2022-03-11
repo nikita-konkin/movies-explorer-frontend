@@ -4,14 +4,22 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  max-width: 1280px;
+  max-width: calc(100% - 140px);
   min-height: 590px;
-  background: #073042;
+  background: #FFFFFF;
 }
 @media screen and (max-width: 768px){
 	.promo{
 
-		min-height: 785px;
+		min-height: 586px;
+    max-width: calc(100% - 40px);
+
+	}
+}
+@media screen and (max-width: 320px){
+  .promo{
+
+    max-width: calc(100% - 28px);
 
 	}
 }
