@@ -1,0 +1,19 @@
+.entry__welcome{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+
+  max-width: 396px;
+  width: 100%;
+
+  color: #000000;
+
+}
+@media screen and (max-width: 320px){
+	.entry__welcome{
+
+    margin: 45px auto 0 14px;
+
+	}
+}

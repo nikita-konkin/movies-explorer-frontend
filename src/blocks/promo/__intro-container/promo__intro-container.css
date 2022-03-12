@@ -1,0 +1,29 @@
+.promo__intro-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../../images/landing_logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  /* height: 100%; */
+  max-width: 1280px;
+  min-height: 524px;
+  background-color: #F5F5F5;
+  border-radius: 10px 10px 0 0;
+}
+@media screen and (max-width: 768px){
+	.promo__intro-container{
+
+		min-height: 784px;
+
+	}
+}
+@media screen and (max-width: 320px){
+  .promo__intro-container{
+
+    min-height: 533px;
+    background-size: 248px;
+
+	}
+}

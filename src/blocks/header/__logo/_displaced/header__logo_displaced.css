@@ -1,0 +1,10 @@
+.header__logo_displaced{
+  margin: 18px auto 18px auto;
+}
+@media screen and (max-width: 320px){
+	.header__logo_displaced{
+
+    margin: 0px auto 0 auto;
+
+	}
+}

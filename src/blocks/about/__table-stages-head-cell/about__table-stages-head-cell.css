@@ -1,0 +1,25 @@
+.about__table-stages-head-cell{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+
+  /* height: 50px; */
+
+  color: #000000;
+
+  text-align: left;
+}
+
+@media screen and (max-width: 320px){
+	.about__table-stages-head-cell{
+
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    max-width: 284px;
+    margin: 41px 0 0 10px;
+
+	}
+}

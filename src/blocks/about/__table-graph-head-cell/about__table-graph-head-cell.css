@@ -1,0 +1,37 @@
+.about__table-graph-head-cell{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  padding: 17px 0 0 0;
+
+  color: #000000;
+
+  min-height: 36px;
+  max-width: 228px;
+  width: 100%;
+  background: #2BE080;
+
+}
+
+.about__table-graph-head-cell:nth-child(2){
+  margin: 0;
+  /* min-height: 36px; */
+  max-width: calc(1140px - 228px);
+  background: #F2F2F2;
+
+  /* max-width: 228px; */
+  /* width: 100%; */
+}
+
+@media screen and (max-width: 320px){
+	.about__table-graph-head-cell{
+
+    font-size: 11px;
+    line-height: 13px;
+    padding: 11px 0 0 0;
+    min-height: 23px;
+
+	}
+}

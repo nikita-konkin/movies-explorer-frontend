@@ -1,0 +1,25 @@
+.about__table-graph-cell{
+  /* height: 36px; */
+  text-align: center;
+
+  padding-top: 14px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: #A0A0A0;
+}
+@media screen and (max-width: 320px){
+	.about__table-graph-cell{
+
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 0px;
+    margin: 0 0 0 0;
+
+	}
+}

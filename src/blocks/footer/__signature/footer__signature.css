@@ -1,0 +1,22 @@
+.footer__signature{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+
+  text-align: center;
+
+  color: #A0A0A0;
+
+  margin: 0 auto 20px auto;
+}
+@media screen and (max-width: 380px){
+	.footer__signature{
+
+    font-size: 11px;
+    line-height: 15px;
+    max-width: 300px;
+    width: 100%;
+
+	}
+}

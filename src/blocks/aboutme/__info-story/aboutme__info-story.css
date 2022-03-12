@@ -1,0 +1,35 @@
+.aboutme__info-story{
+  grid-area: story;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+
+  color: #000000;
+
+  max-width: 600px;
+  width: 100%;
+
+  margin: 26px 0 0 0;
+}
+
+@media screen and (max-width: 768px){
+	.aboutme__info-story{
+
+    font-size: 12px;
+    line-height: 18px;
+    margin: 12px 0 0 0;
+    max-height: 108px;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.aboutme__info-story{
+
+    font-size: 11px;
+    line-height: 16px;
+    margin: 23px 0 0 0;
+
+	}
+}

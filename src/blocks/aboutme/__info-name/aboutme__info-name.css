@@ -1,0 +1,36 @@
+.aboutme__info-name{
+  grid-area: name;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+
+  letter-spacing: -0.04em;
+
+  color: #000000;
+
+  max-width: 600px;
+  width: 100%;
+  margin: 0;
+}
+@media screen and (max-width: 768px){
+	.aboutme__info-name{
+
+    font-size: 40px;
+    line-height: 40px;
+    max-height: 40px;
+    margin: -7px 0 0 0;
+
+	}
+}
+
+@media screen and (max-width: 671px){
+	.aboutme__info-name{
+
+    font-size: 30px;
+    line-height: 36px;
+    margin: 40px 0 0 0;
+
+	}
+}

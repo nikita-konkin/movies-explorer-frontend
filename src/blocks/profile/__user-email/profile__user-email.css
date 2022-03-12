@@ -1,0 +1,23 @@
+.profile__user-email{
+  max-width: 410px;
+  width: 100%;
+  padding: 16px 0 0 0;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+
+}
+
+.profile__user-email::placeholder {
+  text-align: right;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+
+  text-align: right;
+
+  color: #000000;
+}

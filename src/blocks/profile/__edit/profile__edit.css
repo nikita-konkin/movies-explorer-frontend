@@ -1,0 +1,25 @@
+.profile__edit{
+  margin: 220px 0 0 0;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+  transition: all 0.2s ease-out;
+}
+.profile__edit:hover{
+  opacity: 0.5;
+}
+@media screen and (max-width: 320px){
+	.profile__edit{
+
+    margin: 375px 0 0 0;
+
+	}
+}

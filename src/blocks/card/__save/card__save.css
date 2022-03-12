@@ -1,0 +1,45 @@
+.card__save{
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 9px;
+  left: 9px;
+
+  height: 21px;
+  width: 71px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+
+  background: #F9F9F9;
+  border-radius: 30px;
+
+  color: #000000;
+
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+}
+.card:hover .card__save{
+  display: flex;
+}
+@media screen and (max-width: 768px){
+	.card__save{
+
+    top: 9px;
+    right: 9px;
+    left: auto;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.card__save{
+
+
+	}
+}

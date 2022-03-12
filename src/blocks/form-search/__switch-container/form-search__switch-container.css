@@ -1,0 +1,22 @@
+.form-search__switch-container{
+  display: flex;
+  /* padding: 37px 0 0 0; */
+  margin: 0px auto 0 auto;
+}
+
+@media screen and (max-width: 768px){
+	.form-search__switch-container{
+
+    padding: 37px 0 0 0;
+    margin: 0 auto 0 auto;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.form-search__switch-container{
+
+    margin: 0 0 0 15px;
+    padding: 43px 0 0 0;
+
+	}
+}

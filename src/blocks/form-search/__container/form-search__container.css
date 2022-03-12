@@ -1,0 +1,14 @@
+.form-search__container{
+  position: relative;
+  max-width: 1140px;
+  width: 100%;
+
+}
+
+@media screen and (max-width: 768px){
+	.form-search__container{
+
+    margin: 60px auto 0 auto;
+
+	}
+}

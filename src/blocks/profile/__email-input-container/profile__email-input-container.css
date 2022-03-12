@@ -1,0 +1,13 @@
+.profile__email-input-container{
+  display: flex;
+  max-width: 410px;
+  width: 100%;
+  padding: 0 10px 0 10px;
+}
+@media screen and (max-width: 320px){
+	.profile__email-input-container{
+
+    max-width: 260px;
+
+	}
+}

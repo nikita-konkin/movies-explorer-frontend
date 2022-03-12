@@ -1,0 +1,13 @@
+.navigation__side_mobile{
+  width: 100vw;
+  animation-name: slideinMobile;
+}
+@keyframes slideinMobile {
+  from {
+    width: 0vw;
+  }
+
+  to {
+    width: 100vw;
+  }
+}

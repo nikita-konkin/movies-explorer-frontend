@@ -1,0 +1,49 @@
+.techs__cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #E8E8E8;
+  border-radius: 10px;
+
+  width: 90px;
+  height: 60px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #000000;
+
+}
+
+@media screen and (max-width: 768px){
+	.techs__cell{
+
+    width: 84px;
+    height: 53px;
+    font-size: 12px;
+    line-height: 15px;
+
+	}
+}
+@media screen and (max-width: 671px){
+	.techs__cell{
+
+    height: 57px;
+    margin: 0;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.techs__cell{
+
+    height: 57px;
+    margin: 0;
+
+	}
+}

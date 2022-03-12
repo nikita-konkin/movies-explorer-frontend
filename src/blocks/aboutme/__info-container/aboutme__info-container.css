@@ -1,0 +1,53 @@
+.aboutme__info-container{
+  max-width: 1140px;
+  width: 100%;
+
+  margin: 66px auto 0 auto;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-areas:
+    'name foto'
+    'job foto'
+    'story foto'
+    'link foto';
+  /* gap: 10px; */
+  grid-template-columns: 4fr 1fr;
+}
+
+@media screen and (max-width: 768px){
+	.aboutme__info-container{
+
+    max-width: 668px;
+
+	}
+}
+@media screen and (max-width: 671px){
+  .aboutme__info-container{
+
+    max-width: 492px;
+    margin: 62px auto 0 auto;
+    grid-template-areas:
+      'foto'
+      'name'
+      'job'
+      'story'
+      'link';
+
+	}
+}
+
+@media screen and (max-width: 320px){
+  .aboutme__info-container{
+
+    max-width: 292px;
+    margin: 62px auto 0 auto;
+    grid-template-areas:
+      'foto'
+      'name'
+      'job'
+      'story'
+      'link';
+
+	}
+}

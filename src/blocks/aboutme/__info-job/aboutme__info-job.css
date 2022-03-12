@@ -1,0 +1,32 @@
+.aboutme__info-job{
+  grid-area: job;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+
+  color: #111111;
+
+  max-width: 600px;
+  width: 100%;
+  margin: 18px 0 0 0;
+}
+
+@media screen and (max-width: 768px){
+	.aboutme__info-job{
+
+    font-size: 12px;
+    line-height: 18px;
+    max-height: 18px;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.aboutme__info-job{
+
+    font-size: 11px;
+    line-height: 16px;
+
+	}
+}

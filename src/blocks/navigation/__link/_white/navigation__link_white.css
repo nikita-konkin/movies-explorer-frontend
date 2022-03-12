@@ -1,0 +1,13 @@
+.navigation__link_white{
+
+  color: #FFFFFF;
+
+}
+
+@media screen and (max-width: 768px){
+	.navigation__link_white{
+
+    margin: 8px 0px auto auto;
+
+	}
+}

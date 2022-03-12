@@ -1,1 +1,1 @@
-# movies-explorer-frontend
+# Frontend часть диполмной работы Яндекс Практикума

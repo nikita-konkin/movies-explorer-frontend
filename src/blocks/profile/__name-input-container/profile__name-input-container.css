@@ -1,0 +1,13 @@
+.profile__name-input-container{
+  display: flex;
+  border-bottom: 2px solid #E8E8E8;
+  max-width: 410px;
+  width: 100%;
+}
+@media screen and (max-width: 320px){
+	.profile__name-input-container{
+
+    max-width: 260px;
+
+	}
+}

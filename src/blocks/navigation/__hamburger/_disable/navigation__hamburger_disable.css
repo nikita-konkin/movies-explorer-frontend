@@ -1,0 +1,4 @@
+.navigation__hamburger_disable{
+  background-image: url('../../../../images/hamburger_menu_disable.svg');
+  z-index: 10;
+}

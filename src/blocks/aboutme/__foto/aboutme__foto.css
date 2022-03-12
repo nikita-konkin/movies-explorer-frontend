@@ -1,0 +1,16 @@
+.aboutme__foto{
+  max-width: 270px;
+  height: auto;
+  width: auto;
+
+  border-radius: 10px;
+
+  grid-area: foto;
+}
+@media screen and (max-width: 320px){
+	.aboutme__foto{
+
+    max-width: 292px;
+
+	}
+}

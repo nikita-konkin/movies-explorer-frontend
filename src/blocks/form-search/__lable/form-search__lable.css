@@ -1,0 +1,17 @@
+.form-search__lable{
+  margin: 1px 14px 98px 12px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+
+}
+
+@media screen and (max-width: 320px){
+	.form-search__lable{
+
+    font-size: 11px;
+    line-height: 18px;
+
+	}
+}

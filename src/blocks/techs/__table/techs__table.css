@@ -1,0 +1,38 @@
+.techs__table{
+  padding: 0;
+  margin: 90px 0 0 0;
+  border-spacing: 10px;
+
+  display: inline-grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+
+
+}
+
+@media screen and (max-width: 768px){
+	.techs__table{
+
+    margin: 75px 0 0 0;
+    border-spacing: 8px;
+
+	}
+}
+@media screen and (max-width: 671px){
+	.techs__table{
+
+    grid-template-columns: repeat(3, 1fr);
+    margin: 46px 0 0 0;
+    row-gap: 10px;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.techs__table{
+
+    grid-template-columns: repeat(2, 1fr);
+    margin: 46px 0 0 0;
+    row-gap: 10px;
+
+	}
+}

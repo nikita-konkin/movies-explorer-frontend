@@ -1,0 +1,19 @@
+.profile__welcome{
+  margin: 74px 0 123px 0;
+}
+
+
+@media screen and (max-width: 768px){
+	.profile__welcome{
+
+    margin: 74px 0 95px 0;
+
+	}
+}
+@media screen and (max-width: 320px){
+	.profile__welcome{
+
+        margin: 73px 0 81px 0;
+
+	}
+}

@@ -1,0 +1,12 @@
+.aboutme__link{
+  grid-area: link;
+  margin: 99px 0 0 0;
+}
+
+@media screen and (max-width: 768px){
+	.aboutme__link{
+
+		max-height: 17px;
+    margin: 38px 0 0 0;
+	}
+}
