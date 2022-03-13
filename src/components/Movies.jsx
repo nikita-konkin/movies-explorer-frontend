@@ -10,7 +10,7 @@ export default function Movies(props) {
   return (
     <>
       <Header component = {Navigation}/>
-      <SearchForm />
+      <SearchForm pullSerchData={props.pullSerchData}/>
       <MoviesCardList cardsArray={props.cardsArray}/>
       <Preloader />
       <Footer />

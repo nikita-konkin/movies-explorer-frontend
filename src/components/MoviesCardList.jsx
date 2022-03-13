@@ -3,13 +3,13 @@ import MoviesCard from './MoviesCard.jsx'
 
 
 export default function MoviesCardList(props){
-  const url = 'https://www.newstatesman.com/wp-content/uploads/sites/2/2021/12/2ATHYW0-1038x778.jpg'
+  const url = 'https://api.nomoreparties.co'
   return(
     <section className="cards" aria-label="article">
       {props.cardsArray.map(card => (<MoviesCard
         id={card.id}
         nameRU={card.nameRU}
-        image={url}
+        image={url+card.image.url}
         duration={card.duration}
         tempSaved={props.tempSaved}
         />))}

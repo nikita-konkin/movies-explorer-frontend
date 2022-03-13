@@ -9,8 +9,11 @@ import {
   Route,
 } from "react-router-dom";
 import {
-  api
-} from '../utils/api.js'
+  moviesApi
+} from '../utils/MoviesApi.js'
+import {
+  mainApi
+} from '../utils/MainApi.js'
 
 import Movies from './Movies.jsx'
 import SavedMovies from './SavedMovies.jsx'
@@ -24,15 +27,22 @@ export default function App() {
 
   const [cardsArray, setCardsArray] = useState([])
 
-  useEffect(() => {
+  // useEffect(() => {
+  //
+  //   refreshCardsData()
+  //
+  // }, []);
 
-    refreshCardsData()
+  function findCards(request, short) {
+    console.log(request);
+    moviesApi.getInitialCards().then(data => {
 
-  }, []);
+      const dataFiltered = data
+        .filter(value => value.nameRU.toLowerCase().includes(request));
+      const dataFilteredShort = dataFiltered
+        .filter(value => value.duration <= 40);
+      short ? setCardsArray(dataFilteredShort) : setCardsArray(dataFiltered)
 
-  function refreshCardsData() {
-    api.getInitialCards().then(data => {
-      setCardsArray(data)
 
     }).catch(err => {
       console.log(err)
@@ -43,7 +53,11 @@ export default function App() {
     <div className = "root">
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="movies" element={<Movies cardsArray = {cardsArray} />} />
+        <Route path="movies"
+          element={<Movies
+            cardsArray = {cardsArray}
+            pullSerchData = {findCards}
+            />} />
         <Route path="saved-movies" element={<SavedMovies cardsArray = {cardsArray} />} />
         <Route path="profile" element={<Profile />} />
         <Route path="signup" element={<Register />} />
