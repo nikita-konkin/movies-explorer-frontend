@@ -26,28 +26,49 @@ import Main from './Main.jsx'
 export default function App() {
 
   const [cardsArray, setCardsArray] = useState([])
+  const [cardsArrayFiltered, setCardsArrayFiltered] = useState([])
+  
+  const [useFilteredCard, setUseFilteredCard] = useState(false)
+  // const [start, setStart] = useState(false)
 
-  // useEffect(() => {
-  //
-  //   refreshCardsData()
-  //
-  // }, []);
 
-  function findCards(request, short) {
-    console.log(request);
+  useEffect(() => {
+
+    refreshCardsData()
+
+  }, []);
+
+
+
+  function refreshCardsData(){
     moviesApi.getInitialCards().then(data => {
+        
+      setCardsArray(data)
 
-      const dataFiltered = data
-        .filter(value => value.nameRU.toLowerCase().includes(request));
-      const dataFilteredShort = dataFiltered
-        .filter(value => value.duration <= 40);
-      short ? setCardsArray(dataFilteredShort) : setCardsArray(dataFiltered)
-
-
+      
     }).catch(err => {
       console.log(err)
     })
   }
+
+
+  function findCards(request, short) {
+    console.log(request);
+
+    if (request != ""){
+      setUseFilteredCard(true)
+      const dataFiltered = cardsArray
+        .filter(value => value.nameRU.toLowerCase().includes(request));
+      const dataFilteredShort = dataFiltered
+        .filter(value => value.duration <= 40);
+      short ? setCardsArrayFiltered(dataFilteredShort) : setCardsArrayFiltered(dataFiltered)
+    } else {
+      setUseFilteredCard(false)
+    }
+
+  }
+
+
 
   return (
     <div className = "root">
@@ -55,7 +76,7 @@ export default function App() {
         <Route path="/" element={<Main />} />
         <Route path="movies"
           element={<Movies
-            cardsArray = {cardsArray}
+            cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
             pullSerchData = {findCards}
             />} />
         <Route path="saved-movies" element={<SavedMovies cardsArray = {cardsArray} />} />

@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {  useState } from 'react'
 
-const Preloader = () => {
+export default function Preloader (props) {
+
+    const [isPreload, SetIsPreload] = useState(false)
+
+    function setPreload(){
+        props.preload(true)
+    }
+
     return (
         <div className="preloader">
             <div className="preloader__container">
-                <span className="preloader__round">Еще</span>
+                <span className="preloader__round" onClick={setPreload}>Еще</span>
             </div>
         </div>
     )
 };
 
-export default Preloader
+

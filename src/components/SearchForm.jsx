@@ -7,17 +7,16 @@ export default function SearchForm(props) {
 
   function handleTuggleSwitchState() {
     setTuggleSwitchState(!tuggleSwitchState)
-    if (input !== '') {
-      props.pullSerchData(input, tuggleSwitchState)
-    }
+    props.pullSerchData(input, !tuggleSwitchState)
+
 
   }
 
   function onSubmit(e){
     e.preventDefault();
-    if (input !== '') {
-      props.pullSerchData(input, tuggleSwitchState)
-    }
+    // if (input !== '') {
+    props.pullSerchData(input, tuggleSwitchState)
+    // }
 
   }
 
