@@ -1,7 +1,7 @@
 class MainApi {
   constructor(config) {
     this._headersAuth = config.headersAuth;
-    this._authorizationUrl = config.authorizationUrl;
+    this._usersApiUrl = config.usersApiUrl;
   }
 
 
@@ -17,7 +17,7 @@ class MainApi {
 
   handleRegistration(name, pass, email) {
 
-    return fetch(`${this._authorizationUrl}/signup`, {
+    return fetch(`${this._usersApiUrl}/signup`, {
         method: 'POST',
         headers: this._headersAuth,
         body: JSON.stringify({
@@ -32,7 +32,7 @@ class MainApi {
 
   handleAuthorization(email, pass) {
 
-    return fetch(`${this._authorizationUrl}/signin`, {
+    return fetch(`${this._usersApiUrl}/signin`, {
         method: 'POST',
         headers: this._headersAuth,
         credentials: 'include',
@@ -47,7 +47,7 @@ class MainApi {
 
   handleTokenValidation(JWT) {
 
-    return fetch(`${this._authorizationUrl}/users/me`, {
+    return fetch(`${this._usersApiUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -58,11 +58,38 @@ class MainApi {
 
   }
 
+  saveFilm(country, director, duration, year, 
+    description, image, trailer, nameRU, nameEN, 
+    thumbnail, movieId) {
+
+    return fetch(`${this._usersApiUrl}/movies`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers
+      body: JSON.stringify({
+          country: country,
+          director: director,
+          duration: duration,
+          year: year,
+          description: description,
+          image: image,
+          trailer: trailer,
+          nameRU: nameRU,
+          nameEN: nameEN,
+          thumbnail: thumbnail,
+          movieId: movieId
+        })
+    })
+    .then(res => this.error(res));
+
+  }
+
+
 }
 
 export const mainApi = new MainApi({
   // authorizationUrl: 'https://api.mesto.niki-konkin.nomoredomains.work',
-  authorizationUrl: 'http://localhost:3000',
+  usersApiUrl: 'http://localhost:3000',
   headersAuth: {
     'Content-Type': 'application/json'
   },

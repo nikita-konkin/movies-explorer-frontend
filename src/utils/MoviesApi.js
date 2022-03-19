@@ -22,6 +22,8 @@ class MoviesApi {
       .then(res => this.error(res));
   }
 
+
+
 }
 
 export const moviesApi = new MoviesApi({

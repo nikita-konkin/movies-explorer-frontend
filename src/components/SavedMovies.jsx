@@ -7,8 +7,7 @@ import Footer from './Footer.jsx'
 
 export default function SavedMovies(props) {
 
-  const tempFilter = props.cardsArray.filter(value => value.id < 10);
-
+  const tempFilter = props.cardsArray.filter(value => value.id > 10);
   const tempSaved = true;
 
   return (

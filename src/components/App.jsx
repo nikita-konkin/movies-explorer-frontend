@@ -36,11 +36,13 @@ export default function App() {
   const [useFilteredCard, setUseFilteredCard] = useState(false)
   // const [start, setStart] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
-  const [loggedIn, setLoggedIn] = useState(false)
+  // const [loggedIn, setLoggedIn] = useState(false)
   const [registrationStatus, setRegistrationStatus] = useState(false)
   // const [stayOnCurrentPage, setStayOnCurrentPage] = useState(false)
   // const logged = localStorage.getItem('loggedIn')
   const token = localStorage.getItem("token");
+  const loggedIn = localStorage.getItem("loggedIn");
+
 
   const now = new Date()
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ export default function App() {
   useEffect(() => {
     
     if (token) {
-      console.log('TOKEN')
+
       mainApi.handleTokenValidation(token).then(data => {
         handleLogin()
       }).catch(err => {
@@ -58,10 +60,6 @@ export default function App() {
 
     }
 
-  }, []);
-
-  useEffect(() => {
-    // localStorage.setItem('loggedIn', false)
   }, []);
 
 
@@ -101,13 +99,11 @@ export default function App() {
   }
 
   function handleLogin() {
-    console.log('login')
-    setLoggedIn(true)
 
-    const loggedIn = {
-      value: true,
-      expiry: now.getTime() + 60000,
-    }
+    // const loggedIn = {
+    //   value: true,
+    //   expiry: now.getTime() + 60000,
+    // }
     localStorage.setItem('loggedIn', true)
     // localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
     // setStayOnCurrentPage ? '' : navigate('/movies')
@@ -140,7 +136,6 @@ export default function App() {
 
   }
 
-
   return (
     <div className = "root">
       {/*<CurrentUserContext.Provider value = { currentUser }>*/}
@@ -149,13 +144,13 @@ export default function App() {
           <Route path="/" element={<Main />} />
           <Route path="movies" 
             element={<ProtectedRoute 
-              loggedIn = {token}
+              loggedIn = {loggedIn}
               component={Movies}
               cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
               pullSerchData = {findCards}
               />} />
           <Route path="saved-movies" element={<ProtectedRoute 
-              loggedIn = {token}
+              loggedIn = {loggedIn}
               component={SavedMovies} 
               cardsArray = {cardsArray} 
             />} />
