@@ -4,9 +4,14 @@ import React, {
   useState
 } from 'react';
 import {
+  CurrentUserContext
+} from '../context/CurrentUserContext.js'
+import ProtectedRoute from "./ProtectedRoute";
+import {
   Link,
   Routes,
   Route,
+  useNavigate
 } from "react-router-dom";
 import {
   moviesApi
@@ -30,27 +35,94 @@ export default function App() {
   
   const [useFilteredCard, setUseFilteredCard] = useState(false)
   // const [start, setStart] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [registrationStatus, setRegistrationStatus] = useState(false)
+  // const [stayOnCurrentPage, setStayOnCurrentPage] = useState(false)
+  // const logged = localStorage.getItem('loggedIn')
+  const token = localStorage.getItem("token");
+
+  const now = new Date()
+  const navigate = useNavigate();
 
 
   useEffect(() => {
+    
+    if (token) {
+      console.log('TOKEN')
+      mainApi.handleTokenValidation(token).then(data => {
+        handleLogin()
+      }).catch(err => {
+        console.log(err)
+      })
 
-    refreshCardsData()
+    }
 
   }, []);
 
+  useEffect(() => {
+    // localStorage.setItem('loggedIn', false)
+  }, []);
 
 
   function refreshCardsData(){
     moviesApi.getInitialCards().then(data => {
-        
       setCardsArray(data)
-
-      
     }).catch(err => {
       console.log(err)
     })
+
   }
 
+  function handleRegistration(data) {
+
+    mainApi.handleRegistration(data.name, data.password, data.mail)
+      .then(data => {
+        setRegistrationStatus(true)
+      }).catch(err => {
+        console.log(err)
+      })
+      // .finally(() => {
+      //   setInfoTooltipState(true)
+      // })
+  }
+  
+  function handleAuthorization(data) {
+
+    mainApi.handleAuthorization(data.mail, data.password)
+      .then(auth => {
+        localStorage.setItem('token', auth.token);
+        handleLogin()
+        navigate('/movies')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  function handleLogin() {
+    console.log('login')
+    setLoggedIn(true)
+
+    const loggedIn = {
+      value: true,
+      expiry: now.getTime() + 60000,
+    }
+    localStorage.setItem('loggedIn', true)
+    // localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+    // setStayOnCurrentPage ? '' : navigate('/movies')
+
+    // refreshProfileData()
+    refreshCardsData()
+  }
+
+  function refreshProfileData(){
+    mainApi.getProfileData().then(data => {
+      setCurrentUser(data.data)
+    }).catch(err => {
+      console.log(err)
+    });
+  }
 
   function findCards(request, short) {
     console.log(request);
@@ -69,22 +141,34 @@ export default function App() {
   }
 
 
-
   return (
     <div className = "root">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="movies"
-          element={<Movies
-            cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
-            pullSerchData = {findCards}
+      {/*<CurrentUserContext.Provider value = { currentUser }>*/}
+      <CurrentUserContext.Provider >
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="movies" 
+            element={<ProtectedRoute 
+              loggedIn = {token}
+              component={Movies}
+              cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
+              pullSerchData = {findCards}
+              />} />
+          <Route path="saved-movies" element={<ProtectedRoute 
+              loggedIn = {token}
+              component={SavedMovies} 
+              cardsArray = {cardsArray} 
             />} />
-        <Route path="saved-movies" element={<SavedMovies cardsArray = {cardsArray} />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="signup" element={<Register />} />
-        <Route path="signin" element={<Login />} />
-        <Route path="404" element={<NotFound />} />
-      </Routes>
+          <Route path="profile" element={<Profile />} />
+          <Route path="signup" element={<Register 
+            auth={handleRegistration}
+            />} />
+          <Route path="signin" element={<Login 
+            auth={handleAuthorization}
+            />} />
+          <Route path="404" element={<NotFound />} />
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
   )
 

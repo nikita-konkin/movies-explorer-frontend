@@ -62,7 +62,7 @@ class MainApi {
 
 export const mainApi = new MainApi({
   // authorizationUrl: 'https://api.mesto.niki-konkin.nomoredomains.work',
-  authorizationUrl: 'http://localhost:3000/',
+  authorizationUrl: 'http://localhost:3000',
   headersAuth: {
     'Content-Type': 'application/json'
   },

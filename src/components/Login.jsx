@@ -8,9 +8,11 @@ function navigation() {
   return false;
 }
 
-export default function Login() {
+export default function Login(props) {
 
   const [userEmailClass, setUserEmailClass] = useState(false)
+  const [mail, setMail] = useState('')
+  const [password, setPassword] = useState('')
 
   useEffect(() => {
 
@@ -19,22 +21,38 @@ export default function Login() {
   }, []);
 
   const userEmailLableClass = userEmailClass ? 'entry__user-email-lable entry__user-email-lable_signin' : 'entry__user-email-lable'
+  const handleMail = (e) => {setMail(e.target.value)}
+  const handlePass = (e) => {setPassword(e.target.value)}
+
+  function handleAuthorization(e) {
+    e.preventDefault()
+
+    props.auth({
+      mail: mail,
+      password: password
+    })
+
+  }
 
   return (
     <>
-    <Header component={navigation}/>
-    <main className="entry">
+    <Header component={navigation} />
+    <form className="entry" onSubmit={handleAuthorization}>
       <h2 className="entry__welcome">Рады видеть!</h2>
       <lable className={userEmailLableClass}>E-mail</lable>
-      <input type="text" className="entry__user-email-input"/>
+      <input type="text" className="entry__user-email-input"
+        onChange={handleMail}
+        required/>
       <lable className="entry__user-password-lable">Пароль</lable>
-      <input type="password" className="entry__user-password-input"/>
+      <input type="password" className="entry__user-password-input"
+        onChange={handlePass}
+        required/>
       <span className="entry__input-error" >Что-то пошло не так...</span>
 
-      <input type="submit" className="entry__submit" value="Зарегистрироваться"/>
+      <input type="submit" className="entry__submit" value="Войти"/>
       <h2 className="entry__check-text">Ещё не зарегистрированы? <Link
 		  className="entry__check-link" to="/signup">Регистрация</Link></h2>
-    </main>
+    </form>
     </>
   );
 }
