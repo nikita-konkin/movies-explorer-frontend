@@ -8,11 +8,10 @@ export default function MoviesCardList(props){
   return(
     <section className="cards" aria-label="article">
       {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => (<MoviesCard
-        id={card.id}
-        nameRU={card.nameRU}
-        image={url+card.image.url}
-        duration={card.duration}
+        card={card}
+        saveFilm={props.saveFilm}
         tempSaved={props.tempSaved}
+        key={card.id}
         />))}
     </section>
   )

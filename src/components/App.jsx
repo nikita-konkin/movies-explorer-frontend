@@ -136,6 +136,15 @@ export default function App() {
 
   }
 
+  function saveFilm(card, serverUrl) {
+    mainApi.saveFilm(card, serverUrl).then(req => {
+      console.log('OK-SAVED')
+    }).catch(err => {
+      console.log(err)
+    });
+  }
+  // console.log(cardsArray)
+
   return (
     <div className = "root">
       {/*<CurrentUserContext.Provider value = { currentUser }>*/}
@@ -148,6 +157,7 @@ export default function App() {
               component={Movies}
               cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
               pullSerchData = {findCards}
+              saveFilm = {saveFilm}
               />} />
           <Route path="saved-movies" element={<ProtectedRoute 
               loggedIn = {loggedIn}

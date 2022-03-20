@@ -53,6 +53,7 @@ export default function Movies(props) {
         cardsArray={props.cardsArray}
         pageCardsCount={pageCardsCount}
         pageCardsPreload={pageCardsPreload}
+        saveFilm={props.saveFilm}
         />
       <Preloader preload={preload}/>
       <Footer />

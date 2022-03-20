@@ -1,11 +1,11 @@
 class MainApi {
   constructor(config) {
-    this._headersAuth = config.headersAuth;
+    this._headers = config.headers;
     this._usersApiUrl = config.usersApiUrl;
   }
 
 
-  handleError(res) {
+  error(res) {
     if (res.ok) {
       return res.json();
     }
@@ -19,7 +19,7 @@ class MainApi {
 
     return fetch(`${this._usersApiUrl}/signup`, {
         method: 'POST',
-        headers: this._headersAuth,
+        headers: this._headers,
         body: JSON.stringify({
           name: name,
           password: pass,
@@ -34,7 +34,7 @@ class MainApi {
 
     return fetch(`${this._usersApiUrl}/signin`, {
         method: 'POST',
-        headers: this._headersAuth,
+        headers: this._headers,
         credentials: 'include',
         body: JSON.stringify({
           email: email,
@@ -58,26 +58,25 @@ class MainApi {
 
   }
 
-  saveFilm(country, director, duration, year, 
-    description, image, trailer, nameRU, nameEN, 
-    thumbnail, movieId) {
+  saveFilm(data, url) {
 
     return fetch(`${this._usersApiUrl}/movies`, {
       method: 'POST',
       credentials: 'include',
-      headers: this._headers
+      headers: this._headers,
       body: JSON.stringify({
-          country: country,
-          director: director,
-          duration: duration,
-          year: year,
-          description: description,
-          image: image,
-          trailer: trailer,
-          nameRU: nameRU,
-          nameEN: nameEN,
-          thumbnail: thumbnail,
-          movieId: movieId
+          country: data.country,
+          director: data.director,
+          duration: data.duration,
+          year: parseInt(data.year),
+          description: data.description,
+          image: url+data.image.url,
+          trailer: data.trailer,
+          nameRU: data.nameRU,
+          nameEN: data.nameEN,
+          thumbnail: url+data.image.formats.thumbnail.url,
+          trailerLink: data.trailerLink,
+          movieId: data.id
         })
     })
     .then(res => this.error(res));
@@ -90,7 +89,7 @@ class MainApi {
 export const mainApi = new MainApi({
   // authorizationUrl: 'https://api.mesto.niki-konkin.nomoredomains.work',
   usersApiUrl: 'http://localhost:3000',
-  headersAuth: {
+  headers: {
     'Content-Type': 'application/json'
   },
 });
