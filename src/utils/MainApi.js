@@ -26,7 +26,7 @@ class MainApi {
           email: email
         })
       })
-      .then(res => this.handleError(res));
+      .then(res => this.error(res));
 
   }
 
@@ -41,7 +41,7 @@ class MainApi {
           password: pass
         })
       })
-      .then(res => this.handleError(res));
+      .then(res => this.error(res));
 
   }
 
@@ -54,7 +54,7 @@ class MainApi {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${JWT}`
       }
-    }).then(res => this.handleError(res));
+    }).then(res => this.error(res));
 
   }
 
@@ -80,6 +80,26 @@ class MainApi {
         })
     })
     .then(res => this.error(res));
+
+  }
+
+  addOwner(movieId){
+
+    return fetch(`${this._usersApiUrl}/movies/${parseInt(movieId)}`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+    })
+    .then(res => this.error(res));
+  }
+
+  getSavedFilms() {
+
+    return fetch(`${this._usersApiUrl}/movies`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: this._headers,
+    }).then(res => this.error(res));
 
   }
 

@@ -31,6 +31,7 @@ import Main from './Main.jsx'
 export default function App() {
 
   const [cardsArray, setCardsArray] = useState([])
+  const [savedCardsArray, setSavedCardsArray] = useState([])
   const [cardsArrayFiltered, setCardsArrayFiltered] = useState([])
   
   const [useFilteredCard, setUseFilteredCard] = useState(false)
@@ -42,6 +43,11 @@ export default function App() {
   // const logged = localStorage.getItem('loggedIn')
   const token = localStorage.getItem("token");
   const loggedIn = localStorage.getItem("loggedIn");
+
+  const [pageCardsCount, SetPageCardsCount] = useState()
+  const [pageCardsPreload, SetPageCardsPreload] = useState(0)
+  // const [isPreload, SetIsPreload] = useState(false)
+  const [windoWidth, setWindoWidth] = useState(window.innerWidth)
 
 
   const now = new Date()
@@ -63,9 +69,47 @@ export default function App() {
   }, []);
 
 
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindoWidth(window.innerWidth));
+  }, []);
+
+  useEffect(() => {
+    cardsCount()
+  });
+
+  function cardsCount(){
+
+    if (windoWidth > 768) {
+      SetPageCardsCount(12)
+    } else if(windoWidth > 320) {
+      SetPageCardsCount(8)
+    } else if (windoWidth <= 320) {
+      SetPageCardsCount(5)
+    }
+
+  }
+
+  function preload(set) {
+
+    if (set & windoWidth > 768) {
+      SetPageCardsPreload(pageCardsPreload + 4)
+    } else if(set & windoWidth <= 768) {
+      SetPageCardsPreload(pageCardsPreload + 2)
+    }
+  }
+
   function refreshCardsData(){
     moviesApi.getInitialCards().then(data => {
       setCardsArray(data)
+    }).catch(err => {
+      console.log(err)
+    })
+
+  }
+  function refreshSavedCardsData(){
+    mainApi.getSavedFilms().then(data => {
+      setSavedCardsArray(data.data)
     }).catch(err => {
       console.log(err)
     })
@@ -110,6 +154,8 @@ export default function App() {
 
     // refreshProfileData()
     refreshCardsData()
+    refreshSavedCardsData()
+    replace()
   }
 
   function refreshProfileData(){
@@ -137,13 +183,32 @@ export default function App() {
   }
 
   function saveFilm(card, serverUrl) {
-    mainApi.saveFilm(card, serverUrl).then(req => {
-      console.log('OK-SAVED')
+    mainApi.saveFilm(card, serverUrl).then(res => {
+      if (res.data.matchedCount > 0) {
+        addOwner(card.id)
+      }
+      refreshSavedCardsData()
     }).catch(err => {
       console.log(err)
     });
   }
-  // console.log(cardsArray)
+
+  function replace() {
+    const updatedHeaders = cardsArray.map((obj, index) => {
+      obj
+      // console.log(obj.id)
+    });
+    console.log('updatedHeaders')
+    console.log(updatedHeaders)
+  }
+  console.log(cardsArray)
+  console.log(savedCardsArray)
+  function addOwner(movieId){
+    mainApi.addOwner(movieId).catch(err => {
+      console.log(err)
+    });
+  }
+
 
   return (
     <div className = "root">
@@ -156,13 +221,22 @@ export default function App() {
               loggedIn = {loggedIn}
               component={Movies}
               cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
+              savedCardsArray = {savedCardsArray}
               pullSerchData = {findCards}
               saveFilm = {saveFilm}
+              // cardsCount = {cardsCount}
+              preload = {preload}
+              pageCardsCount = {pageCardsCount}
+              pageCardsPreload = {pageCardsPreload}
+
               />} />
           <Route path="saved-movies" element={<ProtectedRoute 
               loggedIn = {loggedIn}
               component={SavedMovies} 
-              cardsArray = {cardsArray} 
+              cardsArray = {savedCardsArray} 
+              preload = {preload}
+              pageCardsCount = {pageCardsCount}
+              pageCardsPreload = {pageCardsPreload}
             />} />
           <Route path="profile" element={<Profile />} />
           <Route path="signup" element={<Register 

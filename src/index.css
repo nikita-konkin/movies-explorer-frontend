@@ -41,6 +41,7 @@
 @import url(./blocks/card/__movie-duration/card__movie-duration.css);
 @import url(./blocks/card/__image/card__image.css);
 @import url(./blocks/card/__save/card__save.css);
+@import url(./blocks/card/__save/_disable/card__save_disable.css);
 
 @import url(./blocks/cards/cards.css);
 
