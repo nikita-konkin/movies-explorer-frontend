@@ -19,7 +19,7 @@ export default function MoviesCard(props) {
   }
 
   function renderSaveBtn(){
-    if (!props.saved) {
+    if (!props.card.saved) {
       return(
         <button className="card__save" onClick={onSaveFilmBtn}>Сохранить</button>
       )
@@ -27,18 +27,19 @@ export default function MoviesCard(props) {
   }
 
   const cardDeleteButtonClassName = (
-    `${props.saved ? 'card__delete' : `card__like ${like ? 'card__like_liked' : ''}`}`
+    // `${props.saved ? 'card__delete' : `card__like card__like_liked`}`
+    `${props.card.saved && props.saved ? 'card__delete' : `${props.card.saved ? `card__like card__like_liked`:`card__like` }`}`
   );
   // const cardSaveButtonClassName = (
   //   `${props.saved ? 'card__save_disable' : `card__save`}`
   // );
 
   function onSaveFilmBtn(){
-    props.saveFilm(props.card,  url)
+    props.saveFilm(props.card, url)
   }
   return (
     <div className="card" id={props.card.id}>
-      <img className="card__image" src={props.saved ? props.card.image : url+props.card.image.url} />
+      <img className="card__image" src={props.saved || props.card.saved ? props.card.image : url+props.card.image.url} />
       <div className="card__title-container">
         <h2 className="card__title">{props.card.nameRU}</h2>
         <h3 className="card__movie-duration">{durationCounter()}</h3>

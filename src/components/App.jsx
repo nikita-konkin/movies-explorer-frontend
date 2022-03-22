@@ -102,6 +102,8 @@ export default function App() {
   function refreshCardsData(){
     moviesApi.getInitialCards().then(data => {
       setCardsArray(data)
+      
+      
     }).catch(err => {
       console.log(err)
     })
@@ -155,7 +157,7 @@ export default function App() {
     // refreshProfileData()
     refreshCardsData()
     refreshSavedCardsData()
-    replace()
+
   }
 
   function refreshProfileData(){
@@ -193,18 +195,42 @@ export default function App() {
     });
   }
 
-  function replace() {
-    const updatedHeaders = cardsArray.map((obj, index) => {
-      obj
-      // console.log(obj.id)
-    });
-    console.log('updatedHeaders')
-    console.log(updatedHeaders)
+
+  function mergeSavedAndOrigMovies(cardsArray, savedMoviesArray, saved) {
+    const savedId = savedMoviesArray.map(item => { return item.movieId; });
+  
+    let savedCardsArray = savedMoviesArray.map(obj => {
+      return {
+        country: obj.country,
+        description: obj.description,
+        director: obj.director,
+        duration: obj.duration,
+        image: obj.image,
+        id: obj.movieId,
+        nameEN: obj.nameEN,
+        nameRU: obj.nameRU,
+        owner: obj.owner,
+        thumbnail: obj.thumbnail,
+        trailerLink: obj.trailerLink,
+        year: obj.year,
+        __v: obj.__v,
+        _id: obj._id,
+        saved: true
+      }
+    })
+  
+    const cardsArrayFiltered = cardsArray.filter(card => !savedId.includes(card.id))
+    const cardsArrayWithSaved = cardsArrayFiltered.concat(savedCardsArray).sort((a, b) => (a.id > b.id) ? 1 : -1)
+    
+    return saved ? savedCardsArray : cardsArrayWithSaved
   }
-  console.log(cardsArray)
-  console.log(savedCardsArray)
+
+  // console.log(cardsArray)
+  // console.log(savedCardsArray)
   function addOwner(movieId){
-    mainApi.addOwner(movieId).catch(err => {
+    mainApi.addOwner(movieId).then(res => {
+      refreshSavedCardsData()
+    }).catch(err => {
       console.log(err)
     });
   }
@@ -222,6 +248,7 @@ export default function App() {
               component={Movies}
               cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
               savedCardsArray = {savedCardsArray}
+              mergeMovies = {mergeSavedAndOrigMovies}
               pullSerchData = {findCards}
               saveFilm = {saveFilm}
               // cardsCount = {cardsCount}
@@ -233,7 +260,9 @@ export default function App() {
           <Route path="saved-movies" element={<ProtectedRoute 
               loggedIn = {loggedIn}
               component={SavedMovies} 
-              cardsArray = {savedCardsArray} 
+              cardsArray = {savedCardsArray}
+              savedCardsArray = {savedCardsArray}
+              mergeMovies = {mergeSavedAndOrigMovies}
               preload = {preload}
               pageCardsCount = {pageCardsCount}
               pageCardsPreload = {pageCardsPreload}

@@ -8,21 +8,31 @@ import Footer from './Footer.jsx'
 
 export default function Movies(props) {
 
+  function renderMovie() {
+    const cardsArray = props.mergeMovies(props.cardsArray, props.savedCardsArray)
 
-  
-  return (  
-    <>
+    return (
+
+      <>
       <Header component = {Navigation}/>
       <SearchForm pullSerchData={props.pullSerchData}/>
       <MoviesCardList 
-        cardsArray={props.cardsArray}
+        cardsArray={cardsArray}
+        // savedCardsArray={props.savedCardsArray}
         pageCardsCount={props.pageCardsCount}
         pageCardsPreload={props.pageCardsPreload}
-        savedCardsArray={props.savedCardsArray}
         saveFilm={props.saveFilm}
         />
       <Preloader preload={props.preload}/>
       <Footer />
+      </>
+
+      )
+  }
+  
+  return (  
+    <>
+    {renderMovie()}
     </>
 
   );

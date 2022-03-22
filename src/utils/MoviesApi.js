@@ -22,7 +22,7 @@ class MoviesApi {
       .then(res => this.error(res));
   }
 
-
+  
 
 }
 

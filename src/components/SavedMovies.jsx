@@ -7,21 +7,30 @@ import Footer from './Footer.jsx'
 
 export default function SavedMovies(props) {
 
-  // const tempFilter = props.cardsArray.filter(value => value.id > 10);
+  function renderSavedMovie() {
+    const cardsArray = props.mergeMovies(props.cardsArray, props.savedCardsArray, true)
+    const saved = true;
+    
+    return (
 
-  const saved = true;
-  console.log(props.cardsArray)
+      <>
+        <Header component = {Navigation}/>
+        <SearchForm />
+        <MoviesCardList
+          cardsArray={cardsArray}
+          pageCardsCount={props.pageCardsCount}
+          pageCardsPreload={props.pageCardsPreload}
+          saved = {saved}
+          />
+        <Footer />
+      </>
+
+      )
+  }
+
   return (
     <>
-      <Header component = {Navigation}/>
-      <SearchForm />
-      <MoviesCardList
-        cardsArray={props.cardsArray}
-        pageCardsCount={props.pageCardsCount}
-        pageCardsPreload={props.pageCardsPreload}
-        saved = {saved}
-        />
-      <Footer />
+      {renderSavedMovie()}
     </>
   );
 }
