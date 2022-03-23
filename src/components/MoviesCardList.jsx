@@ -4,7 +4,7 @@ import MoviesCard from './MoviesCard.jsx'
 
 export default function MoviesCardList(props){
   const url = 'https://api.nomoreparties.co'
-  console.log(props.cardsArray)
+  // console.log(props.cardsArray)
   function handleSavedMovieaArray() {
     return(
       <section className="cards" aria-label="article">
@@ -12,10 +12,10 @@ export default function MoviesCardList(props){
           (<MoviesCard
           card={card}
           saveFilm={props.saveFilm}
+          deleteFilm = {props.deleteFilm}
           key={props.saved ? card.movieId : card.id}
           saved={props.saved}
           />))}
-
       </section>
     )
   }
@@ -29,6 +29,7 @@ export default function MoviesCardList(props){
           (<MoviesCard
           card={card}
           saveFilm={props.saveFilm}
+          deleteFilm = {props.deleteFilm}
           key={props.saved ? card.movieId : card.id}
           saved={props.saved}
           />))}

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 export default function MoviesCard(props) {
 
-  const [like, setlike] = useState(false)
+  // const [like, setlike] = useState(false)
   const url = 'https://api.nomoreparties.co'
   // console.log(props.card)
   function durationCounter() {
@@ -14,8 +14,8 @@ export default function MoviesCard(props) {
     return time
   }
 
-  function handleLike() {
-    setlike(!like)
+  function handleDelete() {
+    props.deleteFilm(props.card._id)
   }
 
   function renderSaveBtn(){
@@ -43,7 +43,7 @@ export default function MoviesCard(props) {
       <div className="card__title-container">
         <h2 className="card__title">{props.card.nameRU}</h2>
         <h3 className="card__movie-duration">{durationCounter()}</h3>
-        <button type="button" className={`${cardDeleteButtonClassName}`} onClick={handleLike}></button>
+        <button type="button" className={`${cardDeleteButtonClassName}`} onClick={handleDelete}></button>
       </div>
       {renderSaveBtn()}
     </div>

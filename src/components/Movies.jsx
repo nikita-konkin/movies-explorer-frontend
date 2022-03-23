@@ -22,8 +22,15 @@ export default function Movies(props) {
         pageCardsCount={props.pageCardsCount}
         pageCardsPreload={props.pageCardsPreload}
         saveFilm={props.saveFilm}
+        deleteFilm = {props.deleteFilm}
         />
-      <Preloader preload={props.preload}/>
+      <Preloader
+        preload={props.preload}
+        preloadStatus={props.preloadStatus}
+        refreshPreloadStatus={props.refreshPreloadStatus}
+        saved={false}
+        resetPreloadCounter={props.resetPreloadCounter}
+        />
       <Footer />
       </>
 

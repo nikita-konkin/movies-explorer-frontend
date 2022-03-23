@@ -103,6 +103,17 @@ class MainApi {
 
   }
 
+  deleteFilm(movieId) {
+
+    return fetch(`${this._usersApiUrl}/movies/${movieId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: this._headers
+      })
+      .then(res => this.error(res));
+
+  }
+
 
 }
 
