@@ -30,6 +30,8 @@ import Main from './Main.jsx'
 
 export default function App() {
 
+  // const [currentUser, setCurrentUser] = useState({})
+
   const [cardsArray, setCardsArray] = useState([])
   const [savedCardsArray, setSavedCardsArray] = useState([])
   const [cardsArrayFiltered, setCardsArrayFiltered] = useState([])
@@ -50,6 +52,10 @@ export default function App() {
   const [preloadStatus, SetPreloadStatus] = useState(false)
   // const [isPreload, SetIsPreload] = useState(false)
   const [windoWidth, setWindoWidth] = useState(window.innerWidth)
+
+  const [movieGetError, setMovieGetError] = useState(false)
+  const [registrationError, setRegistrationError] = useState(false)
+  // const [registrationErrorText, setRegistrationErrorText] = useState(false)
 
 
   const now = new Date()
@@ -89,7 +95,6 @@ export default function App() {
     } else if (windoWidth <= 320) {
       SetPageCardsCount(5)
     }
-
   }
 
   function resetPreloadCounter() {
@@ -103,17 +108,15 @@ export default function App() {
     } else if(set & windoWidth <= 768) {
       SetPageCardsPreload(pageCardsPreload + 2)
     }
-
-
   }
 
   function refreshPreloadStatus(saved) {
-    console.log(pageCardsPreload)
-    console.log(pageCardsCount)
-    console.log(saved)
-    console.log(pageCardsPreload + pageCardsCount)
+    // console.log(pageCardsPreload)
+    // console.log(pageCardsCount)
+    // console.log(saved)
+    // console.log(pageCardsPreload + pageCardsCount)
     if (saved ? pageCardsPreload + pageCardsCount  >= savedCardsArray.length : pageCardsPreload + pageCardsCount >= cardsArray.length) {
-      console.log(pageCardsPreload + pageCardsCount)
+      // console.log(pageCardsPreload + pageCardsCount)
       SetPreloadStatus(true)
     } else {
       SetPreloadStatus(false)
@@ -123,10 +126,9 @@ export default function App() {
   function refreshCardsData(){
     moviesApi.getInitialCards().then(data => {
       setCardsArray(data)
-      
-      
     }).catch(err => {
       console.log(err)
+      setMovieGetError(true)
     })
   }
 
@@ -135,6 +137,7 @@ export default function App() {
       setSavedCardsArray(data.data)
     }).catch(err => {
       console.log(err)
+      setMovieGetError(true)
     })
   }
 
@@ -143,8 +146,10 @@ export default function App() {
     mainApi.handleRegistration(data.name, data.password, data.mail)
       .then(data => {
         setRegistrationStatus(true)
-      }).catch(err => {
-        console.log(err)
+        navigate('/signin')
+      }).catch(res => {
+        setRegistrationError(true)
+        console.log(res)
       })
       // .finally(() => {
       //   setInfoTooltipState(true)
@@ -174,9 +179,16 @@ export default function App() {
     // localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
     // setStayOnCurrentPage ? '' : navigate('/movies')
 
-    // refreshProfileData()
+    refreshProfileData()
     refreshCardsData()
     refreshSavedCardsData()
+  }
+
+  function logOut(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('loggedIn')
+    navigate('/')
+    // handleLogin()
   }
 
   function refreshProfileData(){
@@ -185,6 +197,14 @@ export default function App() {
     }).catch(err => {
       console.log(err)
     });
+  }
+
+  function updateUserProfile(name, email){
+    mainApi.patchUserInfo(name, email).then(data => {
+      refreshProfileData()
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   function findCards(request, short) {
@@ -279,7 +299,7 @@ export default function App() {
   return (
     <div className = "root">
       {/*<CurrentUserContext.Provider value = { currentUser }>*/}
-      <CurrentUserContext.Provider >
+      <CurrentUserContext.Provider value = {currentUser}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="movies" 
@@ -299,9 +319,10 @@ export default function App() {
               preloadStatus = {preloadStatus}
               refreshPreloadStatus = {refreshPreloadStatus}
               resetPreloadCounter = {resetPreloadCounter}
+              movieGetError = {movieGetError}
 
               />} />
-          <Route path="saved-movies" element={<ProtectedRoute 
+          <Route path="saved-movies" element = {<ProtectedRoute 
               loggedIn = {loggedIn}
               component={SavedMovies} 
               // cardsArray = {savedCardsArray}
@@ -315,13 +336,19 @@ export default function App() {
               preloadStatus = {preloadStatus}
               refreshPreloadStatus = {refreshPreloadStatus}
               resetPreloadCounter = {resetPreloadCounter}
+              movieGetError = {movieGetError}
             />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element = {<Profile
+            updateUserProfile = {updateUserProfile}
+            logOut = {logOut}
+            />} />
           <Route path="signup" element={<Register 
             auth={handleRegistration}
+            registrationError={registrationError}
             />} />
           <Route path="signin" element={<Login 
             auth={handleAuthorization}
+            registrationStatus={registrationStatus}
             />} />
           <Route path="404" element={<NotFound />} />
         </Routes>

@@ -12,7 +12,6 @@ export default function Preloader (props) {
     }
 
     function preloadBtn() {
-        console.log(props.preloadStatus)
        if (props.preloadStatus) {
         return (
                 <span className="preloader__round" >Больше фильмов нет...</span>

@@ -7,6 +7,8 @@ export default function MoviesCardList(props){
   // console.log(props.cardsArray)
   function handleSavedMovieaArray() {
     return(
+      <>
+      {props.movieGetError ? renderError() : ''}
       <section className="cards" aria-label="article">
         {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
           (<MoviesCard
@@ -17,13 +19,24 @@ export default function MoviesCardList(props){
           saved={props.saved}
           />))}
       </section>
+      </>
     )
+  }
+
+  function renderError(){
+    return(
+      <p className="cards_error">Во выполнения запроса произошла ошибка. 
+      Возможно, проблема с соединением или сервер недоступен. 
+      Подождите немного и попробуйте ещё раз</p>
+      )
   }
 
   function handleMovieaArray(){
 
 
     return(
+      <>
+      {props.movieGetError ? renderError() : ''}
       <section className="cards" aria-label="article">
         {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
           (<MoviesCard
@@ -35,6 +48,7 @@ export default function MoviesCardList(props){
           />))}
 
       </section>
+      </>
 
       )
   }

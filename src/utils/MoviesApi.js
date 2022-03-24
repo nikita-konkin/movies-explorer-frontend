@@ -13,7 +13,7 @@ class MoviesApi {
 
   getInitialCards() {
 
-    return fetch(this._cardsUrl, {
+    return fetch(`${this._cardsUrl}`, {
         method: "GET",
         // credentials: 'include',
         headers: this._headers

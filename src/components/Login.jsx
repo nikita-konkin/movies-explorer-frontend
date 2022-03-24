@@ -13,7 +13,8 @@ export default function Login(props) {
   const [userEmailClass, setUserEmailClass] = useState(false)
   const [mail, setMail] = useState('')
   const [password, setPassword] = useState('')
-
+  const welcomeText = props.registrationStatus ? 
+    'Регистрация прошла успешно!' : 'Рады видеть!'
   useEffect(() => {
 
     setUserEmailClass(true);
@@ -38,7 +39,7 @@ export default function Login(props) {
     <>
     <Header component={navigation} />
     <form className="entry" onSubmit={handleAuthorization}>
-      <h2 className="entry__welcome">Рады видеть!</h2>
+      <h2 className="entry__welcome">{welcomeText}</h2>
       <lable className={userEmailLableClass}>E-mail</lable>
       <input type="text" className="entry__user-email-input"
         onChange={handleMail}

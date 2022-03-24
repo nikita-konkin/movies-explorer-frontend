@@ -13,7 +13,31 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
+  getProfileData() {
 
+    return fetch(`${this._usersApiUrl}/users/me`, {
+        method: "GET",
+        credentials: 'include',
+        headers: this._headers
+      })
+      .then(res => this.error(res));
+
+  }
+
+  patchUserInfo(name, email) {
+
+    return fetch(`${this._usersApiUrl}/users/me`, {
+        method: 'PATCH',
+        headers: this._headers,
+        credentials: 'include',
+        body: JSON.stringify({
+          name: name,
+          email: email
+        })
+      })
+      .then(res => this.error(res));
+
+  }
 
   handleRegistration(name, pass, email) {
 

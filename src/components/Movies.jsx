@@ -23,6 +23,7 @@ export default function Movies(props) {
         pageCardsPreload={props.pageCardsPreload}
         saveFilm={props.saveFilm}
         deleteFilm = {props.deleteFilm}
+        movieGetError={props.movieGetError}
         />
       <Preloader
         preload={props.preload}

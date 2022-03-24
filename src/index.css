@@ -24,6 +24,7 @@
 
 @import url(./blocks/form-search/form-search.css);
 @import url(./blocks/form-search/__input/form-search__input.css);
+@import url(./blocks/form-search/__input/_color_red/form-search__input_color_red.css);
 @import url(./blocks/form-search/__btn-submit/form-search__btn-submit.css);
 @import url(./blocks/form-search/__lable/form-search__lable.css);
 @import url(./blocks/form-search/__btn-switch/form-search__btn-switch.css);
@@ -44,6 +45,8 @@
 @import url(./blocks/card/__save/_disable/card__save_disable.css);
 
 @import url(./blocks/cards/cards.css);
+
+@import url(./blocks/cards_error/cards_error.css);
 
 @import url(./blocks/preloader/preloader.css);
 @import url(./blocks/preloader/__container/preloader__container.css);

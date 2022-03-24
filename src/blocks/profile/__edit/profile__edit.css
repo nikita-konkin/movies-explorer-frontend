@@ -12,6 +12,10 @@
 
   color: #000000;
   transition: all 0.2s ease-out;
+
+  border: none;
+  background-color: #ffffffff;
+  cursor: pointer;
 }
 .profile__edit:hover{
   opacity: 0.5;

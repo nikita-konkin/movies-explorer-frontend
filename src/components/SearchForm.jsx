@@ -4,7 +4,9 @@ export default function SearchForm(props) {
 
   const [tuggleSwitchState, setTuggleSwitchState] = useState(false);
   const [input, setInput] = useState('');
-
+  const [errorText, setErrorText] = useState('Фильм');
+  const [errorState, setErrorstate] = useState(false);
+  const inputPlaceholderClass = errorState ? 'form-search__input form-search__input_color_red' : 'form-search__input'
   function handleTuggleSwitchState() {
     setTuggleSwitchState(!tuggleSwitchState)
     props.pullSerchData(input, !tuggleSwitchState)
@@ -14,9 +16,13 @@ export default function SearchForm(props) {
 
   function onSubmit(e){
     e.preventDefault();
-    // if (input !== '') {
     props.pullSerchData(input, tuggleSwitchState)
-    // }
+    setErrorText('Фильм')
+    setErrorstate(false)
+    if (input == '') {
+      setErrorText('Не введен текст для посика')
+      setErrorstate(true)
+    }
 
   }
 
@@ -24,9 +30,9 @@ export default function SearchForm(props) {
     <form className="form-search"   onSubmit = {e => onSubmit(e)}>
       <div className="form-search__container">
         <input type="text"
-          placeholder="Фильм"
+          placeholder={errorText}
           name="search-box"
-          className="form-search__input"
+          className={inputPlaceholderClass}
           onInput={e => setInput(e.target.value)}
         />
         <input type="submit" value=" "
