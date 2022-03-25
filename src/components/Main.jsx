@@ -6,26 +6,28 @@ import AboutMe from './AboutMe.jsx'
 import Portfolio from './Portfolio.jsx'
 import Footer from './Footer.jsx'
 import Header from './Header.jsx'
+import Navigation from './Navigation.jsx'
 import {
   Link,
   NavLink,
 } from "react-router-dom";
 
 export default function Main() {
+  const logged = localStorage.getItem('loggedIn')
 
   function navigation() {
     return (
-        <nav className="navigation">
-          <NavLink className="navigation__link" to="/signup">Регситрация</NavLink>
-          <NavLink className="navigation__link-signin" to="/signin">Войти</NavLink>
-        </nav>
+      <nav className="navigation">
+        <NavLink className="navigation__link" to="/signup">Регситрация</NavLink>
+        <NavLink className="navigation__link-signin" to="/signin">Войти</NavLink>
+      </nav>
     )
 
   }
 
   return (
     <>
-      <Header component={navigation}/>
+      <Header component={logged ? Navigation : navigation}/>
       <main className="main">
         {<Promo />}
         {<AboutProject />}

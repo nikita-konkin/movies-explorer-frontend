@@ -9,7 +9,8 @@ import Footer from './Footer.jsx'
 export default function Movies(props) {
 
   function renderMovie() {
-    const cardsArray = props.mergeMovies(props.cardsArray, props.savedCardsArray)
+    const cardsArray = props.useFilteredCard ? props.cardsArray : 
+      props.mergeMovies(props.cardsArray, props.savedCardsArray)
 
     return (
 

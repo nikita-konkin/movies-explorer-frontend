@@ -11,7 +11,7 @@ export default function SavedMovies(props) {
   function renderSavedMovie() {
     const cardsArray = props.mergeMovies([], props.savedCardsArray, true)
     const saved = true;
-    
+    console.log(cardsArray)
     return (
 
       <>

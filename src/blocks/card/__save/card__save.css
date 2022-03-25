@@ -28,6 +28,9 @@
 .card:hover .card__save{
   display: flex;
 }
+.card:hover{
+  opacity: 0.7;
+}
 @media screen and (max-width: 768px){
 	.card__save{
 

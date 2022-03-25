@@ -2,9 +2,9 @@ import React, {  useState, useEffect } from 'react'
 
 export default function Preloader (props) {
 
-    // const [isPreload, SetIsPreload] = useState(false)
-    useEffect(() => { props.resetPreloadCounter() }, [props.refreshPreloadStatus(props.saved)])
-    useEffect(() => { props.refreshPreloadStatus(props.saved) }, [])
+    
+    useEffect(() => { props.refreshPreloadStatus(props.saved)}, [props.resetPreloadCounter])
+    useEffect(() => { props.resetPreloadCounter() }, [])
 
     function setPreload(){
         props.preload(true)

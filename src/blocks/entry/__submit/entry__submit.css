@@ -23,7 +23,7 @@
   opacity: 0.8;
 }
 .entry__submit:disabled,
-entry__submit[disabled]{
+ entry__submit[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;

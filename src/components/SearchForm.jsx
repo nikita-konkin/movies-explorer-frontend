@@ -10,8 +10,6 @@ export default function SearchForm(props) {
   function handleTuggleSwitchState() {
     setTuggleSwitchState(!tuggleSwitchState)
     props.pullSerchData(input, !tuggleSwitchState)
-
-
   }
 
   function onSubmit(e){

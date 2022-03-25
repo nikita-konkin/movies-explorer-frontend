@@ -4,7 +4,7 @@ import MoviesCard from './MoviesCard.jsx'
 
 export default function MoviesCardList(props){
   const url = 'https://api.nomoreparties.co'
-  // console.log(props.cardsArray)
+
   function handleSavedMovieaArray() {
     return(
       <>
@@ -15,7 +15,7 @@ export default function MoviesCardList(props){
           card={card}
           saveFilm={props.saveFilm}
           deleteFilm = {props.deleteFilm}
-          key={props.saved ? card.movieId : card.id}
+          key={card.id}
           saved={props.saved}
           />))}
       </section>
@@ -33,35 +33,26 @@ export default function MoviesCardList(props){
 
   function handleMovieaArray(){
 
-
     return(
-      <>
-      {props.movieGetError ? renderError() : ''}
-      <section className="cards" aria-label="article">
-        {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
-          (<MoviesCard
-          card={card}
-          saveFilm={props.saveFilm}
-          deleteFilm = {props.deleteFilm}
-          key={props.saved ? card.movieId : card.id}
-          saved={props.saved}
-          />))}
+        <>
+        {props.movieGetError ? renderError() : ''}
+        <section className="cards" aria-label="article">
+          {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
+            (<MoviesCard
+            card={card}
+            saveFilm={props.saveFilm}
+            deleteFilm = {props.deleteFilm}
+            key={card.id}
+            saved={props.saved}
+            />))}
 
-      </section>
-      </>
-
-      )
+        </section>
+        </>
+        )
   }
 
 
   return(
-    //     <section className="cards" aria-label="article">
-    //   {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
-    //     props.savedCardsArray.map(savedCard => savedCard.movieId === card.id ?
-    //       cardSection(savedCard) : cardSection(card) )
-
-    //     )}
-    // </section>
     <>
     {props.saved ? handleSavedMovieaArray() : handleMovieaArray()}
     </>

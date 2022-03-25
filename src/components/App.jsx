@@ -19,7 +19,10 @@ import {
 import {
   mainApi
 } from '../utils/MainApi.js'
-
+import {
+  WIND_SIZE,
+  CARDS_PARAMS
+} from '../utils/utils.js'
 import Movies from './Movies.jsx'
 import SavedMovies from './SavedMovies.jsx'
 import Profile from './Profile.jsx'
@@ -27,10 +30,13 @@ import Register from './Register.jsx'
 import Login from './Login.jsx'
 import NotFound from './NotFound.jsx'
 import Main from './Main.jsx'
+import { useCookies } from "react-cookie";
+
+const {W_768, W_320} = WIND_SIZE
+const {W_1280_COUNT, W_768_COUNT, W_320_COUNT,
+  W_768_PRELOAD_CARD_COUNT, W_320_PRELOAD_CARD_COUNT} = CARDS_PARAMS
 
 export default function App() {
-
-  // const [currentUser, setCurrentUser] = useState({})
 
   const [cardsArray, setCardsArray] = useState([])
   const [savedCardsArray, setSavedCardsArray] = useState([])
@@ -38,44 +44,35 @@ export default function App() {
   const [savedCardsArrayFiltered, setSavedCardsArrayFiltered] = useState([])
   
   const [useFilteredCard, setUseFilteredCard] = useState(false)
-  // const [start, setStart] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
-  // const [loggedIn, setLoggedIn] = useState(false)
   const [registrationStatus, setRegistrationStatus] = useState(false)
-  // const [stayOnCurrentPage, setStayOnCurrentPage] = useState(false)
-  // const logged = localStorage.getItem('loggedIn')
+  const [profileUpdateStatus, setProfileUpdateStatus] = useState(false)
   const token = localStorage.getItem("token");
   const loggedIn = localStorage.getItem("loggedIn");
 
   const [pageCardsCount, SetPageCardsCount] = useState()
   const [pageCardsPreload, SetPageCardsPreload] = useState(0)
   const [preloadStatus, SetPreloadStatus] = useState(false)
-  // const [isPreload, SetIsPreload] = useState(false)
   const [windoWidth, setWindoWidth] = useState(window.innerWidth)
 
   const [movieGetError, setMovieGetError] = useState(false)
   const [registrationError, setRegistrationError] = useState(false)
-  // const [registrationErrorText, setRegistrationErrorText] = useState(false)
-
+  const [authorizationError, setAuthorizationError] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
 
   const now = new Date()
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    
     if (token) {
-
       mainApi.handleTokenValidation(token).then(data => {
         handleLogin()
       }).catch(err => {
         console.log(err)
       })
-
     }
-
   }, []);
-
 
 
   useEffect(() => {
@@ -88,12 +85,12 @@ export default function App() {
 
   function cardsCount(){
 
-    if (windoWidth > 768) {
-      SetPageCardsCount(12)
-    } else if(windoWidth > 320) {
-      SetPageCardsCount(8)
-    } else if (windoWidth <= 320) {
-      SetPageCardsCount(5)
+    if (windoWidth > W_768) {
+      SetPageCardsCount(W_1280_COUNT)
+    } else if(windoWidth > W_320) {
+      SetPageCardsCount(W_768_COUNT)
+    } else if (windoWidth <= W_320) {
+      SetPageCardsCount(W_320_COUNT)
     }
   }
 
@@ -103,20 +100,20 @@ export default function App() {
 
   function preload(set) {
 
-    if (set & windoWidth > 768) {
-      SetPageCardsPreload(pageCardsPreload + 4)
-    } else if(set & windoWidth <= 768) {
-      SetPageCardsPreload(pageCardsPreload + 2)
+    if (set & windoWidth > W_768) {
+      SetPageCardsPreload(pageCardsPreload + W_768_PRELOAD_CARD_COUNT)
+    } else if(set & windoWidth <= W_768) {
+      SetPageCardsPreload(pageCardsPreload + W_320_PRELOAD_CARD_COUNT)
     }
   }
 
   function refreshPreloadStatus(saved) {
-    // console.log(pageCardsPreload)
-    // console.log(pageCardsCount)
-    // console.log(saved)
-    // console.log(pageCardsPreload + pageCardsCount)
-    if (saved ? pageCardsPreload + pageCardsCount  >= savedCardsArray.length : pageCardsPreload + pageCardsCount >= cardsArray.length) {
-      // console.log(pageCardsPreload + pageCardsCount)
+
+    const arrayCard = useFilteredCard ? cardsArrayFiltered.length : cardsArray.length
+    const arraySavedCard = useFilteredCard ? savedCardsArrayFiltered.length : savedCardsArray.length
+
+    if (saved ? pageCardsPreload + pageCardsCount  >= arraySavedCard : 
+      pageCardsPreload + pageCardsCount >= arrayCard) {
       SetPreloadStatus(true)
     } else {
       SetPreloadStatus(false)
@@ -143,52 +140,41 @@ export default function App() {
 
   function handleRegistration(data) {
 
-    mainApi.handleRegistration(data.name, data.password, data.mail)
-      .then(data => {
+    mainApi.handleRegistration(data.name, data.password, data.email)
+      .then(res => {
         setRegistrationStatus(true)
-        navigate('/signin')
+        handleAuthorization(data)
+        navigate('/movies')
       }).catch(res => {
         setRegistrationError(true)
-        console.log(res)
       })
-      // .finally(() => {
-      //   setInfoTooltipState(true)
-      // })
   }
   
   function handleAuthorization(data) {
-
-    mainApi.handleAuthorization(data.mail, data.password)
+    mainApi.handleAuthorization(data.email, data.password)
       .then(auth => {
         localStorage.setItem('token', auth.token);
         handleLogin()
         navigate('/movies')
       })
       .catch(err => {
+        setAuthorizationError(true)
         console.log(err)
       })
   }
 
   function handleLogin() {
-
-    // const loggedIn = {
-    //   value: true,
-    //   expiry: now.getTime() + 60000,
-    // }
     localStorage.setItem('loggedIn', true)
-    // localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
-    // setStayOnCurrentPage ? '' : navigate('/movies')
-
     refreshProfileData()
     refreshCardsData()
     refreshSavedCardsData()
   }
 
   function logOut(){
+    removeCookie("jwt");
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
     navigate('/')
-    // handleLogin()
   }
 
   function refreshProfileData(){
@@ -202,17 +188,18 @@ export default function App() {
   function updateUserProfile(name, email){
     mainApi.patchUserInfo(name, email).then(data => {
       refreshProfileData()
+      setProfileUpdateStatus(true)
     }).catch(err => {
       console.log(err)
     })
   }
 
   function findCards(request, short) {
-    console.log(request);
+    const array = mergeSavedAndOrigMovies(cardsArray, savedCardsArray)
 
     if (request != "" || short){
       setUseFilteredCard(true)
-      const dataFiltered = cardsArray
+      const dataFiltered = array
         .filter(value => value.nameRU.toLowerCase().includes(request.toLowerCase()));
       const dataFilteredShort = dataFiltered
         .filter(value => value.duration <= 40);
@@ -223,8 +210,6 @@ export default function App() {
   }
 
   function findCardsSavedFilms(request, short) {
-    console.log(request);
-
     if (request != "" || short){
       setUseFilteredCard(true)
       const dataFiltered = savedCardsArray
@@ -285,8 +270,6 @@ export default function App() {
     return saved ? savedCardsArray : cardsArrayWithSaved
   }
 
-  // console.log(cardsArray)
-  // console.log(savedCardsArray)
   function addOwner(movieId){
     mainApi.addOwner(movieId).then(res => {
       refreshSavedCardsData()
@@ -295,52 +278,57 @@ export default function App() {
     });
   }
 
+  // console.log(cardsArray)
+  // console.log(cardsArrayFiltered)
+  // console.log(savedCardsArray)
+  // console.log(savedCardsArrayFiltered)
 
   return (
     <div className = "root">
-      {/*<CurrentUserContext.Provider value = { currentUser }>*/}
       <CurrentUserContext.Provider value = {currentUser}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="movies" 
             element={<ProtectedRoute 
-              loggedIn = {loggedIn}
-              component={Movies}
-              cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
-              savedCardsArray = {savedCardsArray}
-              mergeMovies = {mergeSavedAndOrigMovies}
-              pullSerchData = {findCards}
-              saveFilm = {saveFilm}
-              deleteFilm = {deleteFilm}
-              // cardsCount = {cardsCount}
-              preload = {preload}
-              pageCardsCount = {pageCardsCount}
-              pageCardsPreload = {pageCardsPreload}
-              preloadStatus = {preloadStatus}
-              refreshPreloadStatus = {refreshPreloadStatus}
-              resetPreloadCounter = {resetPreloadCounter}
-              movieGetError = {movieGetError}
+            loggedIn = {loggedIn}
+            component={Movies}
+            cardsArray = {useFilteredCard ? cardsArrayFiltered : cardsArray}
+            savedCardsArray = {savedCardsArray}
+            mergeMovies = {mergeSavedAndOrigMovies}
+            pullSerchData = {findCards}
+            saveFilm = {saveFilm}
+            deleteFilm = {deleteFilm}
+            // cardsCount = {cardsCount}
+            preload = {preload}
+            pageCardsCount = {pageCardsCount}
+            pageCardsPreload = {pageCardsPreload}
+            preloadStatus = {preloadStatus}
+            refreshPreloadStatus = {refreshPreloadStatus}
+            resetPreloadCounter = {resetPreloadCounter}
+            movieGetError = {movieGetError}
+            useFilteredCard = {useFilteredCard}
 
-              />} />
+            />} />
           <Route path="saved-movies" element = {<ProtectedRoute 
-              loggedIn = {loggedIn}
-              component={SavedMovies} 
-              // cardsArray = {savedCardsArray}
-              savedCardsArray = {useFilteredCard ? savedCardsArrayFiltered : savedCardsArray}
-              mergeMovies = {mergeSavedAndOrigMovies}
-              deleteFilm = {deleteFilm}
-              pullSerchData = {findCardsSavedFilms}
-              preload = {preload}
-              pageCardsCount = {pageCardsCount}
-              pageCardsPreload = {pageCardsPreload}
-              preloadStatus = {preloadStatus}
-              refreshPreloadStatus = {refreshPreloadStatus}
-              resetPreloadCounter = {resetPreloadCounter}
-              movieGetError = {movieGetError}
+            loggedIn = {loggedIn}
+            component={SavedMovies} 
+            // cardsArray = {savedCardsArray}
+            savedCardsArray = {useFilteredCard ? savedCardsArrayFiltered : savedCardsArray}
+            mergeMovies = {mergeSavedAndOrigMovies}
+            deleteFilm = {deleteFilm}
+            pullSerchData = {findCardsSavedFilms}
+            preload = {preload}
+            pageCardsCount = {pageCardsCount}
+            pageCardsPreload = {pageCardsPreload}
+            preloadStatus = {preloadStatus}
+            refreshPreloadStatus = {refreshPreloadStatus}
+            resetPreloadCounter = {resetPreloadCounter}
+            movieGetError = {movieGetError}
             />} />
           <Route path="profile" element = {<Profile
             updateUserProfile = {updateUserProfile}
             logOut = {logOut}
+            profileUpdateStatus = {profileUpdateStatus}
             />} />
           <Route path="signup" element={<Register 
             auth={handleRegistration}
@@ -349,8 +337,9 @@ export default function App() {
           <Route path="signin" element={<Login 
             auth={handleAuthorization}
             registrationStatus={registrationStatus}
+            authorizationError={authorizationError}
             />} />
-          <Route path="404" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </CurrentUserContext.Provider>
     </div>

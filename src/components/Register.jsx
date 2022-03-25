@@ -4,19 +4,16 @@ import {
 } from "react-router-dom";
 import Header from './Header.jsx'
 import FromValidator from "./FromValidator.jsx";
-
+import {
+  REGEX
+} from '../utils/utils.js'
+const {PASS_REGEX, EMAIL_REGEX, NAME_REGEX} = REGEX
 function navigation() {
   return false;
 }
 
 export default function Register(props) {
 
-  // const [name, setName] = useState('')
-  // const [mail, setMail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [all, setAll] = useState(false)
-  const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-  const strongEmail = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   const stateSchema = {
     userName: { value: "", error: "" },
     userEmail: { value: "", error: "" },
@@ -27,39 +24,34 @@ export default function Register(props) {
     userName: {
       required: true,
       validator: {
-        func: value => /^[a-zA-Z]+$/.test(value),
+        func: value => NAME_REGEX.test(value),
         error: "Неверный формат имени"
       }
     },
     userEmail: {
       required: true,
       validator: {
-        func: value => strongEmail.test(value),
+        func: value => EMAIL_REGEX.test(value),
         error: "Неверный формат почты"
       }
     },
     userPassword: {
       required: true,
       validator: {
-        func: value => strongRegex.test(value),
+        func: value => PASS_REGEX.test(value),
         error: "Неверный формат пароля"
       }
     }
   };
 
+
   function onSubmitForm(state) {
-    alert(JSON.stringify(state, null, 2));
+    props.auth({
+      name: state.userName,
+      email: state.userEmail,
+      password: state.userPassword
+    })
   }
-
-  // function onSubmitForm(state) {
-  //   // e.preventDefault()
-
-  //   props.auth({
-  //     name: state.userName,
-  //     mail: state.userEmail,
-  //     password: state.userPassword
-  //   })
-  // }
 
   const { values, errors, handleOnChange, handleOnSubmit, disable } = FromValidator(
     stateSchema,
@@ -67,14 +59,11 @@ export default function Register(props) {
     onSubmitForm
   );
 
-  useEffect(() => {
-    
-  }, []);
   const { userName, userEmail, userPassword } = values;
 
   function renderError() {
     return(
-        'Что-то пошло не так...'
+        'Что-то пошло не так при отправке запроса...'
       )
   }
 
@@ -87,28 +76,31 @@ export default function Register(props) {
       <lable className="entry__user-name-lable">Имя
         <input type="text" 
           className="entry__user-name-input" 
-          onChange={handleOnChange}
+          onChange={e => handleOnChange(e)}
+          onBlur={e => handleOnChange(e)}
           name="userName"
           value={userName}
-          required/>
+          />
       </lable>
       {errors.userName && <span className="entry__input-error" >{errors.userName}</span>}
 
       <lable className="entry__user-email-lable">E-mail
         <input type="text" className="entry__user-email-input"
-          onChange={handleOnChange}
+          onChange={e => handleOnChange(e)}
+          onBlur={e => handleOnChange(e)}
           name="userEmail"
           value={userEmail}
-          required/>
+          />
       </lable>
       {errors.userEmail && <span className="entry__input-error" >{errors.userEmail}</span>}
 
       <lable className="entry__user-password-lable">Пароль
         <input type="password" className="entry__user-password-input"
-          onChange={handleOnChange}
+          onChange={e => handleOnChange(e)}
+          onBlur={e => handleOnChange(e)}
           name="userPassword"
           value={userPassword}
-          required/>
+          />
       </lable>
       {errors.userPassword && <span className="entry__input-error" >{errors.userPassword}</span>}
 
