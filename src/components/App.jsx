@@ -47,7 +47,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [registrationStatus, setRegistrationStatus] = useState(false)
   const [profileUpdateStatus, setProfileUpdateStatus] = useState(false)
-  const token = localStorage.getItem("token");
+
   const loggedIn = localStorage.getItem("loggedIn");
 
   const [pageCardsCount, SetPageCardsCount] = useState()
@@ -65,8 +65,9 @@ export default function App() {
 
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     if (token) {
-      console.log('token')
+      // console.log('token')
       mainApi.handleTokenValidation(token).then(data => {
         handleLogin()
       }).catch(err => {
