@@ -144,6 +144,7 @@ class MainApi {
 export const mainApi = new MainApi({
   // authorizationUrl: 'https://api.mesto.niki-konkin.nomoredomains.work',
   usersApiUrl: 'https://api.movie.mesto.konkin.nomoredomains.work',
+  // usersApiUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   },

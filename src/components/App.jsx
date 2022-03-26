@@ -30,7 +30,7 @@ import Register from './Register.jsx'
 import Login from './Login.jsx'
 import NotFound from './NotFound.jsx'
 import Main from './Main.jsx'
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 
 const {W_768, W_320} = WIND_SIZE
 const {W_1280_COUNT, W_768_COUNT, W_320_COUNT,
@@ -58,7 +58,7 @@ export default function App() {
   const [movieGetError, setMovieGetError] = useState(false)
   const [registrationError, setRegistrationError] = useState(false)
   const [authorizationError, setAuthorizationError] = useState(false)
-  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
+  // const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
 
   const now = new Date()
   const navigate = useNavigate();
@@ -66,6 +66,7 @@ export default function App() {
 
   useEffect(() => {
     if (token) {
+      console.log('token')
       mainApi.handleTokenValidation(token).then(data => {
         handleLogin()
       }).catch(err => {
@@ -139,7 +140,6 @@ export default function App() {
   }
 
   function handleRegistration(data) {
-
     mainApi.handleRegistration(data.name, data.password, data.email)
       .then(res => {
         setRegistrationStatus(true)
@@ -171,7 +171,7 @@ export default function App() {
   }
 
   function logOut(){
-    removeCookie("jwt");
+    // removeCookie("jwt");
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
     navigate('/')

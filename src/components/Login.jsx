@@ -16,8 +16,6 @@ function navigation() {
 export default function Login(props) {
 
   const [userEmailClass, setUserEmailClass] = useState(false)
-  // const [mail, setMail] = useState('')
-  // const [password, setPassword] = useState('')
   const welcomeText = props.registrationStatus ? 
     'Регистрация прошла успешно!' : 'Рады видеть!'
   useEffect(() => {
@@ -27,18 +25,6 @@ export default function Login(props) {
   }, []);
 
   const userEmailLableClass = userEmailClass ? 'entry__user-email-lable entry__user-email-lable_signin' : 'entry__user-email-lable'
-  // const handleMail = (e) => {setMail(e.target.value)}
-  // const handlePass = (e) => {setPassword(e.target.value)}
-
-  // function handleAuthorization(e) {
-  //   e.preventDefault()
-
-  //   props.auth({
-  //     mail: mail,
-  //     password: password
-  //   })
-
-  // }
 
   const stateSchema = {
     userEmail: { value: "", error: "" },
