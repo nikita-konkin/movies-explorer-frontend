@@ -172,10 +172,14 @@ export default function App() {
   }
 
   function logOut(){
-    // removeCookie("jwt");
+    mainApi.handleLogout()
+    .catch(err => {
+      console.log(err)
+    });
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
     navigate('/')
+
   }
 
   function refreshProfileData(){

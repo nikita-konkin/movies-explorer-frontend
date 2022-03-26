@@ -82,6 +82,16 @@ class MainApi {
 
   }
 
+  handleLogout() {
+
+    return fetch(`${this._usersApiUrl}/signout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+    }).then(res => this.error(res));
+
+  }
+
   saveFilm(data, url) {
 
     return fetch(`${this._usersApiUrl}/movies`, {
