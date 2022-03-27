@@ -12,15 +12,21 @@ export default function Preloader (props) {
     }
 
     function preloadBtn() {
-       if (props.preloadStatus) {
-        return (
-                <span className="preloader__round" >Больше фильмов нет...</span>
-                )
-       } else {
-            return(
-                <span className="preloader__round" onClick={setPreload}>Еще</span>
-                )
-       }
+      if (props.cardsArraySize === 0){
+          return (
+          <span className="preloader__round" >Ничего не найдено</span>
+          )
+      } else {
+         if (props.preloadStatus) {
+          return (
+                  <span className="preloader__round" >Больше фильмов нет...</span>
+                  )
+         } else {
+              return(
+                  <span className="preloader__round" onClick={setPreload}>Еще</span>
+                  )
+         }
+      }
     }
 
     return (

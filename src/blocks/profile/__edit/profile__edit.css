@@ -25,7 +25,7 @@
  profile__edit[disabled]{
   /*border: 1px solid #999999;*/
   /*background-color: #cccccc;*/
-  color: #666666;
+  color: #dce0dd;
 }
 
 @media screen and (max-width: 320px){

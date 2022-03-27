@@ -15,6 +15,8 @@ function navigation() {
 
 export default function Login(props) {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [userEmailClass, setUserEmailClass] = useState(false)
   const welcomeText = props.registrationStatus ? 
     'Регистрация прошла успешно!' : 'Рады видеть!'
@@ -43,7 +45,7 @@ export default function Login(props) {
       required: true,
       validator: {
         func: value => PASS_REGEX.test(value),
-        error: "Неверный формат пароля"
+        error: "Неверный формат пароля, необходим верхний и нижний регистр и цифры"
       }
     }
   };
@@ -70,6 +72,15 @@ export default function Login(props) {
       )
   }
 
+  function handleEmail(e) {
+    setEmail(e.target.value)
+    handleOnChange(e)
+  }
+  function handlePassword(e){
+    setPassword(e.target.value)
+    handleOnChange(e)
+  }
+
   return (
     <>
     <Header component={navigation} />
@@ -78,16 +89,16 @@ export default function Login(props) {
       <lable className={userEmailLableClass}>E-mail
       <input type="text" className="entry__user-email-input"
         name="userEmail"
-        onChange={handleOnChange}
-        value={userEmail}
+        onChange={e => handleEmail(e)}
+        value={email}
         required/>
       </lable>
       {errors.userEmail && <span className="entry__input-error" >{errors.userEmail}</span>}
       <lable className="entry__user-password-lable">Пароль
       <input type="password" className="entry__user-password-input"
         name="userPassword"
-        onChange={handleOnChange}
-        value={userPassword}
+        onChange={e => handlePassword(e)}
+        value={password}
         required/>
       </lable>
       {errors.userPassword && <span className="entry__input-error" >{errors.userPassword}</span>}

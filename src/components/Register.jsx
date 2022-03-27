@@ -13,6 +13,10 @@ function navigation() {
 }
 
 export default function Register(props) {
+  
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const stateSchema = {
     userName: { value: "", error: "" },
@@ -39,7 +43,7 @@ export default function Register(props) {
       required: true,
       validator: {
         func: value => PASS_REGEX.test(value),
-        error: "Неверный формат пароля"
+        error: "Неверный формат пароля, необходим верхний и нижний регистр и цифры"
       }
     }
   };
@@ -67,7 +71,18 @@ export default function Register(props) {
       )
   }
 
-
+  function handleName(e) {
+    setName(e.target.value)
+    handleOnChange(e)
+  }
+  function handleEmail(e) {
+    setEmail(e.target.value)
+    handleOnChange(e)
+  }
+  function handlePassword(e){
+    setPassword(e.target.value)
+    handleOnChange(e)
+  }
   return (
     <>
     <Header component={navigation}/>
@@ -76,30 +91,30 @@ export default function Register(props) {
       <lable className="entry__user-name-lable">Имя
         <input type="text" 
           className="entry__user-name-input" 
-          onChange={e => handleOnChange(e)}
-          onBlur={e => handleOnChange(e)}
+          onChange={e => handleName(e)}
+          onBlur={e => handleName(e)}
           name="userName"
-          value={userName}
+          value={name}
           />
       </lable>
       {errors.userName && <span className="entry__input-error" >{errors.userName}</span>}
 
       <lable className="entry__user-email-lable">E-mail
         <input type="text" className="entry__user-email-input"
-          onChange={e => handleOnChange(e)}
-          onBlur={e => handleOnChange(e)}
+          onChange={e => handleEmail(e)}
+          onBlur={e => handleEmail(e)}
           name="userEmail"
-          value={userEmail}
+          value={email}
           />
       </lable>
       {errors.userEmail && <span className="entry__input-error" >{errors.userEmail}</span>}
 
       <lable className="entry__user-password-lable">Пароль
         <input type="password" className="entry__user-password-input"
-          onChange={e => handleOnChange(e)}
-          onBlur={e => handleOnChange(e)}
+          onChange={e => handlePassword(e)}
+          onBlur={e => handlePassword(e)}
           name="userPassword"
-          value={userPassword}
+          value={password}
           />
       </lable>
       {errors.userPassword && <span className="entry__input-error" >{errors.userPassword}</span>}

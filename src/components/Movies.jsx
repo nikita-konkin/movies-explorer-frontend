@@ -12,31 +12,32 @@ export default function Movies(props) {
     const cardsArray = props.useFilteredCard ? props.cardsArray : 
       props.mergeMovies(props.cardsArray, props.savedCardsArray)
 
-    return (
+  return (
 
-      <>
-      <Header component = {Navigation}/>
-      <SearchForm pullSerchData={props.pullSerchData}/>
-      <MoviesCardList 
-        cardsArray={cardsArray}
-        // savedCardsArray={props.savedCardsArray}
-        pageCardsCount={props.pageCardsCount}
-        pageCardsPreload={props.pageCardsPreload}
-        saveFilm={props.saveFilm}
-        deleteFilm = {props.deleteFilm}
-        movieGetError={props.movieGetError}
-        />
-      <Preloader
-        preload={props.preload}
-        preloadStatus={props.preloadStatus}
-        refreshPreloadStatus={props.refreshPreloadStatus}
-        saved={false}
-        resetPreloadCounter={props.resetPreloadCounter}
-        />
-      <Footer />
-      </>
+    <>
+    <Header component = {Navigation}/>
+    <SearchForm pullSerchData={props.pullSerchData}/>
+    <MoviesCardList 
+      cardsArray={cardsArray}
+      // savedCardsArray={props.savedCardsArray}
+      pageCardsCount={props.pageCardsCount}
+      pageCardsPreload={props.pageCardsPreload}
+      saveFilm={props.saveFilm}
+      deleteFilm = {props.deleteFilm}
+      movieGetError={props.movieGetError}
+      />
+    <Preloader
+      preload={props.preload}
+      preloadStatus={props.preloadStatus}
+      refreshPreloadStatus={props.refreshPreloadStatus}
+      saved={false}
+      resetPreloadCounter={props.resetPreloadCounter}
+      cardsArraySize={cardsArray.length}
+      />
+    <Footer />
+    </>
 
-      )
+    )
   }
   
   return (  

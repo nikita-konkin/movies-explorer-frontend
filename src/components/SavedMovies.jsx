@@ -32,6 +32,7 @@ export default function SavedMovies(props) {
           refreshPreloadStatus={props.refreshPreloadStatus}
           saved={true}
           resetPreloadCounter={props.resetPreloadCounter}
+          cardsArraySize={cardsArray.length}
           />
         <Footer />
       </>

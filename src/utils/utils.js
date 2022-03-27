@@ -10,7 +10,7 @@ export const CARDS_PARAMS = {
 	W_320_PRELOAD_CARD_COUNT: 2
 }
 export const REGEX = {
-	PASS_REGEX: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+	PASS_REGEX: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
 	EMAIL_REGEX: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
 	NAME_REGEX: /^[а-яА-Яa-zA-ZЁёәіңғүұқөһӘІҢҒҮҰҚӨҺ\-\s]*$/
 }

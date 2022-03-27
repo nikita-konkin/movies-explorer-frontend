@@ -15,10 +15,15 @@ export default function Profile(props) {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [currentName, setCurrentName] = useState('');
+  const [currentEmail, setCurrentEmail] = useState('');
+  const [currentDisable, setCurrentDisable] = useState(false)
 
   React.useEffect(() => {
     setName(currentUser.name);
     setEmail(currentUser.email);
+    setCurrentName(currentUser.name);
+    setCurrentEmail(currentUser.email);
   }, [currentUser]);
 
   function logOutUser() {
@@ -67,6 +72,19 @@ export default function Profile(props) {
       )
   }
 
+  function handleName(e) {
+    setName(e.target.value)
+    handleOnChange(e)
+  }
+  function handleEmail(e) {
+    setEmail(e.target.value)
+    handleOnChange(e)
+  }
+
+  React.useEffect(() => {
+    name != currentName || email != currentEmail ? setCurrentDisable(false) : setCurrentDisable(true)
+  }, [handleName, handleEmail]);
+
   return (
     <>
     <Header component={Navigation}/>
@@ -75,28 +93,29 @@ export default function Profile(props) {
       <div className="profile__name-input-container">
         <label htmlFor="profile__user-name" className="profile__name-input-lable">Имя</label>
         <input type="text"
-          placeholder={currentUser.name}
+          // placeholder={currentUser.name}
           name="userName"
-          value={userName}
+          value={name || ''}
           id="profile__user-name"
           className="profile__user-name"
-          onChange={e => handleOnChange(e)}
+          onChange={e => handleName(e)}
+          // onChange={e => handleOnChange(e)}
           />
       </div>
       <div className="profile__email-input-container">
         <label htmlFor="profile__user-email" className="profile__email-input-lable">E-mail</label>
         <input type="text"
-          placeholder={currentUser.email}
+          // placeholder={currentUser.email}
           className="profile__user-email"
           id="profile__user-email"
-          onChange={e => handleOnChange(e)}
+          onChange={e => handleEmail(e)}
           name="userEmail"
-          value={userEmail}
+          value={email || ''}
           />
       </div>
       {errors.userName && <span className="entry__input-error" >{errors.userName}</span>}
       {errors.userEmail && <span className="entry__input-error" >{errors.userEmail}</span>}
-      <input type = "submit" className="profile__edit" value="Редактировать" disabled={disable}/>
+      <input type = "submit" className="profile__edit" value="Редактировать" disabled={currentDisable ? true : disable}/>
       <input type = "button" className="profile__logout" value="Выйти из аккаунта" onClick={logOutUser} />
     </form>
     </>
