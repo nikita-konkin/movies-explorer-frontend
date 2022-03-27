@@ -63,11 +63,10 @@ export default function App() {
   const now = new Date()
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // console.log('token')
+      console.log('token')
       mainApi.handleTokenValidation(token).then(data => {
         handleLogin()
       }).catch(err => {
@@ -165,10 +164,10 @@ export default function App() {
   }
 
   function handleLogin() {
-    localStorage.setItem('loggedIn', true)
     refreshProfileData()
     refreshCardsData()
     refreshSavedCardsData()
+    localStorage.setItem('loggedIn', true)
   }
 
   function logOut(){

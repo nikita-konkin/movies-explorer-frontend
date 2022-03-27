@@ -13,12 +13,15 @@ class MainApi {
     return Promise.reject({ error: res.status})
   }
 
-  getProfileData() {
+  getProfileData(JWT) {
 
     return fetch(`${this._usersApiUrl}/users/me`, {
         method: "GET",
         credentials: 'include',
-        headers: this._headers
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JWT}`
+        }
       })
       .then(res => this.error(res));
 
@@ -156,5 +159,5 @@ export const mainApi = new MainApi({
   // usersApiUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
-  },
+  }
 });
