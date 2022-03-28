@@ -17,6 +17,7 @@ export default function MoviesCardList(props){
           deleteFilm = {props.deleteFilm}
           key={card.id}
           saved={props.saved}
+          search={props.search}
           />))}
       </section>
       </>

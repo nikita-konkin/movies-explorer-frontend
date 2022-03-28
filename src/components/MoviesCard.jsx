@@ -14,7 +14,13 @@ export default function MoviesCard(props) {
   }
 
   function handleDelete() {
-    props.deleteFilm(props.card._id)
+    if (props.saved) {
+      props.search()
+      props.deleteFilm(props.card._id)
+    } else {
+      props.deleteFilm(props.card._id)
+    }
+
   }
 
   function renderSaveBtn(){

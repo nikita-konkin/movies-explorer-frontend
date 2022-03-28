@@ -38,17 +38,24 @@ const {W_1280_COUNT, W_768_COUNT, W_320_COUNT,
 
 export default function App() {
 
+
+
+  const loggedIn = localStorage.getItem("loggedIn");
+  const StoredSearchData = JSON.parse(localStorage.getItem("dataFiltered") || "[]");
+  const useFilteredCardStored = JSON.parse(localStorage.getItem("useFilteredCard"))
+
   const [cardsArray, setCardsArray] = useState([])
   const [savedCardsArray, setSavedCardsArray] = useState([])
-  const [cardsArrayFiltered, setCardsArrayFiltered] = useState([])
+  const [cardsArrayFiltered, setCardsArrayFiltered] = useState(StoredSearchData)
   const [savedCardsArrayFiltered, setSavedCardsArrayFiltered] = useState([])
   
-  const [useFilteredCard, setUseFilteredCard] = useState(false)
+  const [useFilteredCard, setUseFilteredCard] = useState(useFilteredCardStored)
+  const [useFilteredCardSaved, setUseFilteredCardSaved] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
   const [registrationStatus, setRegistrationStatus] = useState(false)
   const [profileUpdateStatus, setProfileUpdateStatus] = useState(false)
 
-  const loggedIn = localStorage.getItem("loggedIn");
+
 
   const [pageCardsCount, SetPageCardsCount] = useState()
   const [pageCardsPreload, SetPageCardsPreload] = useState(0)
@@ -64,6 +71,7 @@ export default function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+
     const token = localStorage.getItem("token");
     if (token) {
       console.log('token')
@@ -71,10 +79,14 @@ export default function App() {
         handleLogin()
       }).catch(err => {
         console.log(err)
+        localStorage.removeItem('token')
+        localStorage.removeItem('loggedIn')
       })
+    } else {
+      localStorage.removeItem('token')
+      localStorage.removeItem('loggedIn')
     }
   }, []);
-
 
   useEffect(() => {
     window.addEventListener("resize", () => setWindoWidth(window.innerWidth));
@@ -83,6 +95,12 @@ export default function App() {
   useEffect(() => {
     cardsCount()
   });
+
+  useEffect(() => {
+      const StoredRequest = JSON.parse(localStorage.getItem('userSearchRequest'))
+      const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
+      findCardsOnSave(StoredRequest, shortStored, cardsArray, savedCardsArray)
+  }, [savedCardsArray]);
 
   function cardsCount(){
 
@@ -133,6 +151,8 @@ export default function App() {
   function refreshSavedCardsData(){
     mainApi.getSavedFilms().then(data => {
       setSavedCardsArray(data.data)
+
+
     }).catch(err => {
       console.log(err)
       setMovieGetError(true)
@@ -178,7 +198,6 @@ export default function App() {
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
     navigate('/')
-
   }
 
   function refreshProfileData(){
@@ -200,33 +219,65 @@ export default function App() {
 
   function findCards(request, short) {
     const array = mergeSavedAndOrigMovies(cardsArray, savedCardsArray)
+    
+    const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
 
-    if (request != "" || short){
+    if (request != "" || shortStored){
+      localStorage.setItem('userSearchRequest', JSON.stringify(request))
+      localStorage.setItem('useFilteredCard', JSON.stringify(true))
       setUseFilteredCard(true)
       const dataFiltered = array
         .filter(value => value.nameRU.toLowerCase().includes(request.toLowerCase()));
       const dataFilteredShort = dataFiltered
         .filter(value => value.duration <= 40);
-      short ? setCardsArrayFiltered(dataFilteredShort) : setCardsArrayFiltered(dataFiltered)
+      // console.log(shortStored)
+      shortStored ? localStorage.setItem('dataFiltered', JSON.stringify(dataFilteredShort)) & setCardsArrayFiltered(dataFilteredShort) : 
+        localStorage.setItem('dataFiltered', JSON.stringify(dataFiltered)) & setCardsArrayFiltered(dataFiltered)
+
     } else {
       setUseFilteredCard(false)
+      localStorage.setItem('useFilteredCard', JSON.stringify(false))
+    }
+  }
+
+  function findCardsOnSave(request, short, filteredCards, savedCardsArray) {
+    const array = mergeSavedAndOrigMovies(filteredCards, savedCardsArray)
+    console.log(savedCardsArray)
+    const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
+
+    if (request != "" || shortStored){
+      localStorage.setItem('userSearchRequest', JSON.stringify(request))
+      localStorage.setItem('useFilteredCard', JSON.stringify(true))
+      setUseFilteredCard(true)
+      const dataFiltered = array
+        .filter(value => value.nameRU.toLowerCase().includes(request.toLowerCase()));
+      const dataFilteredShort = dataFiltered
+        .filter(value => value.duration <= 40);
+      // console.log(shortStored)
+      shortStored ? localStorage.setItem('dataFiltered', JSON.stringify(dataFilteredShort)) & setCardsArrayFiltered(dataFilteredShort) : 
+        localStorage.setItem('dataFiltered', JSON.stringify(dataFiltered)) & setCardsArrayFiltered(dataFiltered)
+
+    } else {
+      setUseFilteredCard(false)
+      localStorage.setItem('useFilteredCard', JSON.stringify(false))
     }
   }
 
   function findCardsSavedFilms(request, short) {
     if (request != "" || short){
-      setUseFilteredCard(true)
+      setUseFilteredCardSaved(true)
       const dataFiltered = savedCardsArray
         .filter(value => value.nameRU.toLowerCase().includes(request.toLowerCase()));
       const dataFilteredShort = dataFiltered
         .filter(value => value.duration <= 40);
       short ? setSavedCardsArrayFiltered(dataFilteredShort) : setSavedCardsArrayFiltered(dataFiltered)
     } else {
-      setUseFilteredCard(false)
+      setUseFilteredCardSaved(false)
     }
   }
 
   function saveFilm(card, serverUrl) {
+    console.log(card)
     mainApi.saveFilm(card, serverUrl).then(res => {
       if (res.data.matchedCount > 0) {
         addOwner(card.id)
@@ -274,6 +325,35 @@ export default function App() {
     return saved ? savedCardsArray : cardsArrayWithSaved
   }
 
+  // function mergeSavedAndFilteredMovies(cardsArray, savedMoviesArray) {
+  //   const savedId = savedMoviesArray.map(item => { return item.movieId; });
+  
+  //   let savedCardsArray = savedMoviesArray.map(obj => {
+  //     return {
+  //       country: obj.country,
+  //       description: obj.description,
+  //       director: obj.director,
+  //       duration: obj.duration,
+  //       image: obj.image,
+  //       id: obj.movieId,
+  //       nameEN: obj.nameEN,
+  //       nameRU: obj.nameRU,
+  //       owner: obj.owner,
+  //       thumbnail: obj.thumbnail,
+  //       trailerLink: obj.trailerLink,
+  //       year: obj.year,
+  //       __v: obj.__v,
+  //       _id: obj._id,
+  //       saved: true
+  //     }
+  //   })
+  
+  //   const cardsArrayFiltered = cardsArray.filter(card => !savedId.includes(card.id))
+  //   const cardsArrayWithSaved = cardsArrayFiltered.concat(savedCardsArray).sort((a, b) => (a.id > b.id) ? 1 : -1)
+    
+  //   return saved ? savedCardsArray : cardsArrayWithSaved
+  // }
+
   function addOwner(movieId){
     mainApi.addOwner(movieId).then(res => {
       refreshSavedCardsData()
@@ -317,7 +397,8 @@ export default function App() {
             loggedIn = {loggedIn}
             component={SavedMovies} 
             // cardsArray = {savedCardsArray}
-            savedCardsArray = {useFilteredCard ? savedCardsArrayFiltered : savedCardsArray}
+            // savedCardsArray = {savedCardsArray}
+            savedCardsArray = {useFilteredCardSaved ? savedCardsArrayFiltered : savedCardsArray}
             mergeMovies = {mergeSavedAndOrigMovies}
             deleteFilm = {deleteFilm}
             pullSerchData = {findCardsSavedFilms}
@@ -328,6 +409,7 @@ export default function App() {
             refreshPreloadStatus = {refreshPreloadStatus}
             resetPreloadCounter = {resetPreloadCounter}
             movieGetError = {movieGetError}
+            search ={findCardsSavedFilms}
             />} />
           <Route path="profile" element = {<Profile
             updateUserProfile = {updateUserProfile}

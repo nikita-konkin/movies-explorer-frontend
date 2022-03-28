@@ -16,7 +16,7 @@ export default function Movies(props) {
 
     <>
     <Header component = {Navigation}/>
-    <SearchForm pullSerchData={props.pullSerchData}/>
+    <SearchForm pullSerchData={props.pullSerchData}  saved={false}/>
     <MoviesCardList 
       cardsArray={cardsArray}
       // savedCardsArray={props.savedCardsArray}
@@ -25,6 +25,7 @@ export default function Movies(props) {
       saveFilm={props.saveFilm}
       deleteFilm = {props.deleteFilm}
       movieGetError={props.movieGetError}
+
       />
     <Preloader
       preload={props.preload}
