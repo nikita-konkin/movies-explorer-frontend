@@ -43,7 +43,7 @@ export default function Register(props) {
       required: true,
       validator: {
         func: value => PASS_REGEX.test(value),
-        error: "Неверный формат пароля, необходим верхний и нижний регистр и цифры"
+        error: "Неверный формат пароля, необходим верхний и нижний регистр и цифры, минимальная длина 8 символов"
       }
     }
   };

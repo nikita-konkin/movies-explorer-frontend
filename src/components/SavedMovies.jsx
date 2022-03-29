@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from './Header.jsx'
 import Navigation from './Navigation.jsx'
 import MoviesCardList from './MoviesCardList.jsx'
@@ -7,6 +7,11 @@ import Preloader from './Preloader.jsx'
 import Footer from './Footer.jsx'
 
 export default function SavedMovies(props) {
+
+
+  useEffect(() => {
+    props.setUseFilteredCardSaved(false)
+  },[]);
 
   function renderSavedMovie() {
     const cardsArray = props.mergeMovies([], props.savedCardsArray, true)

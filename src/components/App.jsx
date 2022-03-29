@@ -38,13 +38,12 @@ const {W_1280_COUNT, W_768_COUNT, W_320_COUNT,
 
 export default function App() {
 
-
-
   const loggedIn = localStorage.getItem("loggedIn");
   const StoredSearchData = JSON.parse(localStorage.getItem("dataFiltered") || "[]");
-  const useFilteredCardStored = JSON.parse(localStorage.getItem("useFilteredCard"))
+  const useFilteredCardStored = JSON.parse(localStorage.getItem("useFilteredCard") || "[]")
+  const cardsArrayStored = JSON.parse(localStorage.getItem("cardsArrayStored") || "[]")
 
-  const [cardsArray, setCardsArray] = useState([])
+  const [cardsArray, setCardsArray] = useState(cardsArrayStored)
   const [savedCardsArray, setSavedCardsArray] = useState([])
   const [cardsArrayFiltered, setCardsArrayFiltered] = useState(StoredSearchData)
   const [savedCardsArrayFiltered, setSavedCardsArrayFiltered] = useState([])
@@ -55,6 +54,8 @@ export default function App() {
   const [registrationStatus, setRegistrationStatus] = useState(false)
   const [profileUpdateStatus, setProfileUpdateStatus] = useState(false)
 
+  const [requestSavedFilms, setRequestSavedFilms] = useState('')
+  const [requestSavedFilmsShort, setRequestSavedFilmsShort] = useState(false)
 
 
   const [pageCardsCount, SetPageCardsCount] = useState()
@@ -65,13 +66,11 @@ export default function App() {
   const [movieGetError, setMovieGetError] = useState(false)
   const [registrationError, setRegistrationError] = useState(false)
   const [authorizationError, setAuthorizationError] = useState(false)
-  // const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
 
   const now = new Date()
   const navigate = useNavigate();
 
   useEffect(() => {
-
     const token = localStorage.getItem("token");
     if (token) {
       console.log('token')
@@ -97,10 +96,12 @@ export default function App() {
   });
 
   useEffect(() => {
-      const StoredRequest = JSON.parse(localStorage.getItem('userSearchRequest'))
-      const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
-      findCardsOnSave(StoredRequest, shortStored, cardsArray, savedCardsArray)
+    // localStorage.setItem('userSearchRequest', JSON.stringify(''))
+    const StoredRequest = JSON.parse(localStorage.getItem('userSearchRequest'))
+    const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
+    findCardsOnSave(StoredRequest, shortStored, cardsArray, savedCardsArray)
   }, [savedCardsArray]);
+
 
   function cardsCount(){
 
@@ -127,7 +128,6 @@ export default function App() {
   }
 
   function refreshPreloadStatus(saved) {
-
     const arrayCard = useFilteredCard ? cardsArrayFiltered.length : cardsArray.length
     const arraySavedCard = useFilteredCard ? savedCardsArrayFiltered.length : savedCardsArray.length
 
@@ -142,6 +142,7 @@ export default function App() {
   function refreshCardsData(){
     moviesApi.getInitialCards().then(data => {
       setCardsArray(data)
+      localStorage.setItem("cardsArrayStored", JSON.stringify(data))
     }).catch(err => {
       console.log(err)
       setMovieGetError(true)
@@ -151,8 +152,6 @@ export default function App() {
   function refreshSavedCardsData(){
     mainApi.getSavedFilms().then(data => {
       setSavedCardsArray(data.data)
-
-
     }).catch(err => {
       console.log(err)
       setMovieGetError(true)
@@ -197,6 +196,11 @@ export default function App() {
     });
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
+    localStorage.setItem('userSearchRequest', JSON.stringify(''))
+    localStorage.removeItem('cardsArrayStored')
+    localStorage.removeItem('dataFiltered')
+    localStorage.removeItem('userSearchRequestShort')
+    localStorage.removeItem('useFilteredCard')
     navigate('/')
   }
 
@@ -219,7 +223,6 @@ export default function App() {
 
   function findCards(request, short) {
     const array = mergeSavedAndOrigMovies(cardsArray, savedCardsArray)
-    
     const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
 
     if (request != "" || shortStored){
@@ -230,7 +233,6 @@ export default function App() {
         .filter(value => value.nameRU.toLowerCase().includes(request.toLowerCase()));
       const dataFilteredShort = dataFiltered
         .filter(value => value.duration <= 40);
-      // console.log(shortStored)
       shortStored ? localStorage.setItem('dataFiltered', JSON.stringify(dataFilteredShort)) & setCardsArrayFiltered(dataFilteredShort) : 
         localStorage.setItem('dataFiltered', JSON.stringify(dataFiltered)) & setCardsArrayFiltered(dataFiltered)
 
@@ -242,7 +244,6 @@ export default function App() {
 
   function findCardsOnSave(request, short, filteredCards, savedCardsArray) {
     const array = mergeSavedAndOrigMovies(filteredCards, savedCardsArray)
-    console.log(savedCardsArray)
     const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
 
     if (request != "" || shortStored){
@@ -253,7 +254,6 @@ export default function App() {
         .filter(value => value.nameRU.toLowerCase().includes(request.toLowerCase()));
       const dataFilteredShort = dataFiltered
         .filter(value => value.duration <= 40);
-      // console.log(shortStored)
       shortStored ? localStorage.setItem('dataFiltered', JSON.stringify(dataFilteredShort)) & setCardsArrayFiltered(dataFilteredShort) : 
         localStorage.setItem('dataFiltered', JSON.stringify(dataFiltered)) & setCardsArrayFiltered(dataFiltered)
 
@@ -264,6 +264,8 @@ export default function App() {
   }
 
   function findCardsSavedFilms(request, short) {
+    setRequestSavedFilms(request)
+    setRequestSavedFilmsShort(short)
     if (request != "" || short){
       setUseFilteredCardSaved(true)
       const dataFiltered = savedCardsArray
@@ -276,8 +278,20 @@ export default function App() {
     }
   }
 
+  function findCardsSavedFilmsOnDelete() {
+    if (requestSavedFilms != "" || requestSavedFilmsShort){
+      setUseFilteredCardSaved(true)
+      const dataFiltered = savedCardsArray
+        .filter(value => value.nameRU.toLowerCase().includes(requestSavedFilms.toLowerCase()));
+      const dataFilteredShort = dataFiltered
+        .filter(value => value.duration <= 40);
+      requestSavedFilmsShort ? setSavedCardsArrayFiltered(dataFilteredShort) : setSavedCardsArrayFiltered(dataFiltered)
+    } else {
+      setUseFilteredCardSaved(false)
+    }
+  }
+
   function saveFilm(card, serverUrl) {
-    console.log(card)
     mainApi.saveFilm(card, serverUrl).then(res => {
       if (res.data.matchedCount > 0) {
         addOwner(card.id)
@@ -325,35 +339,6 @@ export default function App() {
     return saved ? savedCardsArray : cardsArrayWithSaved
   }
 
-  // function mergeSavedAndFilteredMovies(cardsArray, savedMoviesArray) {
-  //   const savedId = savedMoviesArray.map(item => { return item.movieId; });
-  
-  //   let savedCardsArray = savedMoviesArray.map(obj => {
-  //     return {
-  //       country: obj.country,
-  //       description: obj.description,
-  //       director: obj.director,
-  //       duration: obj.duration,
-  //       image: obj.image,
-  //       id: obj.movieId,
-  //       nameEN: obj.nameEN,
-  //       nameRU: obj.nameRU,
-  //       owner: obj.owner,
-  //       thumbnail: obj.thumbnail,
-  //       trailerLink: obj.trailerLink,
-  //       year: obj.year,
-  //       __v: obj.__v,
-  //       _id: obj._id,
-  //       saved: true
-  //     }
-  //   })
-  
-  //   const cardsArrayFiltered = cardsArray.filter(card => !savedId.includes(card.id))
-  //   const cardsArrayWithSaved = cardsArrayFiltered.concat(savedCardsArray).sort((a, b) => (a.id > b.id) ? 1 : -1)
-    
-  //   return saved ? savedCardsArray : cardsArrayWithSaved
-  // }
-
   function addOwner(movieId){
     mainApi.addOwner(movieId).then(res => {
       refreshSavedCardsData()
@@ -361,11 +346,6 @@ export default function App() {
       console.log(err)
     });
   }
-
-  // console.log(cardsArray)
-  // console.log(cardsArrayFiltered)
-  // console.log(savedCardsArray)
-  // console.log(savedCardsArrayFiltered)
 
   return (
     <div className = "root">
@@ -409,7 +389,8 @@ export default function App() {
             refreshPreloadStatus = {refreshPreloadStatus}
             resetPreloadCounter = {resetPreloadCounter}
             movieGetError = {movieGetError}
-            search ={findCardsSavedFilms}
+            search ={findCardsSavedFilmsOnDelete}
+            setUseFilteredCardSaved = {setUseFilteredCardSaved}
             />} />
           <Route path="profile" element = {<Profile
             updateUserProfile = {updateUserProfile}

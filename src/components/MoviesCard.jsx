@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 export default function MoviesCard(props) {
 
@@ -14,13 +14,7 @@ export default function MoviesCard(props) {
   }
 
   function handleDelete() {
-    if (props.saved) {
-      props.search()
-      props.deleteFilm(props.card._id)
-    } else {
-      props.deleteFilm(props.card._id)
-    }
-
+    props.deleteFilm(props.card._id)
   }
 
   function renderSaveBtn(){
