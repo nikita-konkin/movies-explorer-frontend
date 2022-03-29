@@ -96,12 +96,16 @@ export default function App() {
   });
 
   useEffect(() => {
-    // localStorage.setItem('userSearchRequest', JSON.stringify(''))
+    findCardsSavedFilmsOnDelete()
+  }, [savedCardsArray]);
+
+  useEffect(() => {
+    localStorage.getItem('userSearchRequest') === 'null' ? localStorage.setItem('userSearchRequest', JSON.stringify('')) : 
+      JSON.parse(localStorage.getItem('userSearchRequest'))
     const StoredRequest = JSON.parse(localStorage.getItem('userSearchRequest'))
     const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
     findCardsOnSave(StoredRequest, shortStored, cardsArray, savedCardsArray)
   }, [savedCardsArray]);
-
 
   function cardsCount(){
 
@@ -129,7 +133,7 @@ export default function App() {
 
   function refreshPreloadStatus(saved) {
     const arrayCard = useFilteredCard ? cardsArrayFiltered.length : cardsArray.length
-    const arraySavedCard = useFilteredCard ? savedCardsArrayFiltered.length : savedCardsArray.length
+    const arraySavedCard = useFilteredCardSaved ? savedCardsArrayFiltered.length : savedCardsArray.length
 
     if (saved ? pageCardsPreload + pageCardsCount  >= arraySavedCard : 
       pageCardsPreload + pageCardsCount >= arrayCard) {
@@ -197,6 +201,7 @@ export default function App() {
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
     localStorage.setItem('userSearchRequest', JSON.stringify(''))
+    // localStorage.removeItem('userSearchRequest')
     localStorage.removeItem('cardsArrayStored')
     localStorage.removeItem('dataFiltered')
     localStorage.removeItem('userSearchRequestShort')
@@ -224,9 +229,9 @@ export default function App() {
   function findCards(request, short) {
     const array = mergeSavedAndOrigMovies(cardsArray, savedCardsArray)
     const shortStored = JSON.parse(localStorage.getItem('userSearchRequestShort'))
+    localStorage.setItem('userSearchRequest', JSON.stringify(request != null ? request : ''))
 
     if (request != "" || shortStored){
-      localStorage.setItem('userSearchRequest', JSON.stringify(request))
       localStorage.setItem('useFilteredCard', JSON.stringify(true))
       setUseFilteredCard(true)
       const dataFiltered = array
@@ -237,8 +242,8 @@ export default function App() {
         localStorage.setItem('dataFiltered', JSON.stringify(dataFiltered)) & setCardsArrayFiltered(dataFiltered)
 
     } else {
-      setUseFilteredCard(false)
       localStorage.setItem('useFilteredCard', JSON.stringify(false))
+      setUseFilteredCard(false)
     }
   }
 

@@ -8,7 +8,6 @@ import Footer from './Footer.jsx'
 
 export default function SavedMovies(props) {
 
-
   useEffect(() => {
     props.setUseFilteredCardSaved(false)
   },[]);
@@ -16,7 +15,7 @@ export default function SavedMovies(props) {
   function renderSavedMovie() {
     const cardsArray = props.mergeMovies([], props.savedCardsArray, true)
     const saved = true;
-    // console.log(cardsArray)
+
     return (
 
       <>
