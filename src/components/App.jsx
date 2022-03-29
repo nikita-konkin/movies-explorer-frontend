@@ -30,7 +30,6 @@ import Register from './Register.jsx'
 import Login from './Login.jsx'
 import NotFound from './NotFound.jsx'
 import Main from './Main.jsx'
-// import { useCookies } from "react-cookie";
 
 const {W_768, W_320} = WIND_SIZE
 const {W_1280_COUNT, W_768_COUNT, W_320_COUNT,
@@ -201,7 +200,6 @@ export default function App() {
     localStorage.removeItem('token')
     localStorage.removeItem('loggedIn')
     localStorage.setItem('userSearchRequest', JSON.stringify(''))
-    // localStorage.removeItem('userSearchRequest')
     localStorage.removeItem('cardsArrayStored')
     localStorage.removeItem('dataFiltered')
     localStorage.removeItem('userSearchRequestShort')
@@ -381,8 +379,6 @@ export default function App() {
           <Route path="saved-movies" element = {<ProtectedRoute 
             loggedIn = {loggedIn}
             component={SavedMovies} 
-            // cardsArray = {savedCardsArray}
-            // savedCardsArray = {savedCardsArray}
             savedCardsArray = {useFilteredCardSaved ? savedCardsArrayFiltered : savedCardsArray}
             mergeMovies = {mergeSavedAndOrigMovies}
             deleteFilm = {deleteFilm}
@@ -397,7 +393,9 @@ export default function App() {
             search ={findCardsSavedFilmsOnDelete}
             setUseFilteredCardSaved = {setUseFilteredCardSaved}
             />} />
-          <Route path="profile" element = {<Profile
+          <Route path="profile" element = {<ProtectedRoute
+            loggedIn = {loggedIn}
+            component={Profile} 
             updateUserProfile = {updateUserProfile}
             logOut = {logOut}
             profileUpdateStatus = {profileUpdateStatus}
