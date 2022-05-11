@@ -1,0 +1,9 @@
+.form-search__input_color_red{
+
+}
+
+.form-search__input_color_red::placeholder{
+  font-size: 14px;
+  line-height: 18px;
+  color: #ff0000;
+}

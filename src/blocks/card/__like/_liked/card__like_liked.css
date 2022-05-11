@@ -1,10 +1,11 @@
 .card__like_liked{
-  height: 24px;
+  display: block;
+/*  height: 24px;
   width: 24px;
   background-image: url('../../../../images/card_like_active.svg');
   background-size: cover;
   background-color: transparent;
   border: 0;
   padding: 0;
-  cursor: pointer;
+  cursor: pointer;*/
 }

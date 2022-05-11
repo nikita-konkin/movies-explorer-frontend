@@ -5,7 +5,8 @@
   justify-content: flex-start;
   align-items: center;
   min-height: 625px;
-  /* max-width: 1280px; */
+  max-width: calc(100%);
+  /*max-width: 1280px; */
   width: 100%;
   margin: 0 70px 0 70px;
   background-color: #F5F5F5;

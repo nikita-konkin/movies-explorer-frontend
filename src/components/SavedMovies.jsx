@@ -1,21 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from './Header.jsx'
 import Navigation from './Navigation.jsx'
 import MoviesCardList from './MoviesCardList.jsx'
 import SearchForm from './SearchForm.jsx'
+import Preloader from './Preloader.jsx'
 import Footer from './Footer.jsx'
 
 export default function SavedMovies(props) {
 
-  const tempFilter = props.cardsArray.filter(value => value.id < 10);
-  const tempSaved = true;
+  useEffect(() => {
+    props.setUseFilteredCardSaved(false)
+  },[]);
+
+  function renderSavedMovie() {
+    const cardsArray = props.mergeMovies([], props.savedCardsArray, true)
+    const saved = true;
+
+    return (
+
+      <>
+        <Header component = {Navigation}/>
+        <SearchForm pullSerchData = {props.pullSerchData} saved={true}/>
+        <MoviesCardList
+          cardsArray={cardsArray}
+          pageCardsCount={props.pageCardsCount}
+          pageCardsPreload={props.pageCardsPreload}
+          saved = {saved}
+          deleteFilm = {props.deleteFilm}
+          movieGetError = {props.movieGetError}
+          search={props.search}
+          />
+        <Preloader
+          preload={props.preload}
+          preloadStatus={props.preloadStatus}
+          refreshPreloadStatus={props.refreshPreloadStatus}
+          saved={true}
+          resetPreloadCounter={props.resetPreloadCounter}
+          cardsArraySize={cardsArray.length}
+          />
+        <Footer />
+      </>
+
+      )
+  }
 
   return (
     <>
-      <Header component = {Navigation}/>
-      <SearchForm />
-      <MoviesCardList cardsArray={tempFilter} tempSaved={tempSaved}/>
-      <Footer />
+      {renderSavedMovie()}
     </>
   );
 }

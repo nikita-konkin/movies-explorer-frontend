@@ -1,4 +1,4 @@
-class Api {
+class MoviesApi {
   constructor(config) {
     this._cardsUrl = config.cardsUrl;
   }
@@ -13,7 +13,7 @@ class Api {
 
   getInitialCards() {
 
-    return fetch(this._cardsUrl, {
+    return fetch(`${this._cardsUrl}`, {
         method: "GET",
         // credentials: 'include',
         headers: this._headers
@@ -22,9 +22,11 @@ class Api {
       .then(res => this.error(res));
   }
 
+  
+
 }
 
-export const api = new Api({
+export const moviesApi = new MoviesApi({
   cardsUrl: 'https://api.nomoreparties.co/beatfilm-movies',
   headers: {
     'Content-Type': 'application/json'

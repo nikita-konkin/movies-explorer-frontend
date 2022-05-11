@@ -3,16 +3,60 @@ import MoviesCard from './MoviesCard.jsx'
 
 
 export default function MoviesCardList(props){
-  const url = 'https://www.newstatesman.com/wp-content/uploads/sites/2/2021/12/2ATHYW0-1038x778.jpg'
+  const url = 'https://api.nomoreparties.co'
+
+  function handleSavedMovieaArray() {
+
+    return(
+      <>
+      {props.movieGetError ? renderError() : ''}
+      <section className="cards" aria-label="article">
+        {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
+          (<MoviesCard
+          card={card}
+          saveFilm={props.saveFilm}
+          deleteFilm = {props.deleteFilm}
+          key={card.id}
+          saved={props.saved}
+          search={props.search}
+          />))}
+      </section>
+      </>
+    )
+  }
+
+  function renderError(){
+    return(
+      <p className="cards_error">Во выполнения запроса произошла ошибка. 
+      Возможно, проблема с соединением или сервер недоступен. 
+      Подождите немного и попробуйте ещё раз</p>
+      )
+  }
+
+  function handleMovieaArray(){
+
+    return(
+        <>
+        {props.movieGetError ? renderError() : ''}
+        <section className="cards" aria-label="article">
+          {props.cardsArray.slice(0, props.pageCardsCount + props.pageCardsPreload).map(card => 
+            (<MoviesCard
+            card={card}
+            saveFilm={props.saveFilm}
+            deleteFilm = {props.deleteFilm}
+            key={card.id}
+            saved={props.saved}
+            />))}
+
+        </section>
+        </>
+        )
+  }
+
+
   return(
-    <section className="cards" aria-label="article">
-      {props.cardsArray.map(card => (<MoviesCard
-        id={card.id}
-        nameRU={card.nameRU}
-        image={url}
-        duration={card.duration}
-        tempSaved={props.tempSaved}
-        />))}
-    </section>
+    <>
+    {props.saved ? handleSavedMovieaArray() : handleMovieaArray()}
+    </>
   )
 }

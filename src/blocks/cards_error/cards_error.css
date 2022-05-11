@@ -1,0 +1,10 @@
+.cards_error{
+	font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FF3055;
+
+	max-width: calc(1280px - 70px - 70px);
+	margin: 70px 70px 0 70px;
+}

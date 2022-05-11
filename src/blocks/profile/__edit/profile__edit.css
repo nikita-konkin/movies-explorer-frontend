@@ -12,10 +12,22 @@
 
   color: #000000;
   transition: all 0.2s ease-out;
+
+  border: none;
+  background-color: #ffffffff;
+  cursor: pointer;
 }
 .profile__edit:hover{
   opacity: 0.5;
 }
+
+.profile__edit:disabled,
+ profile__edit[disabled]{
+  /*border: 1px solid #999999;*/
+  /*background-color: #cccccc;*/
+  color: #dce0dd;
+}
+
 @media screen and (max-width: 320px){
 	.profile__edit{
 

@@ -31,7 +31,6 @@ export default function Promo() {
     <div className="promo">
       <div className="promo__intro-container" >
         <h1 className="promo__header" >Учебный проект студента факультета Веб-разработки.</h1>
-
       </div>
       <div className="promo__menu">
         <a className="promo__menu-link" onClick={scrollToAboutProjext} >О проекте</a>

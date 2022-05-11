@@ -7,6 +7,10 @@
   font-size: 13px;
   line-height: 16px;
 
+  border: none;
+  background-color: #ffffffff;
+  cursor: pointer;
+
   text-align: center;
 
   color: #FF004D;
